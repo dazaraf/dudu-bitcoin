@@ -4,7 +4,6 @@ import EmailCapture from "./EmailCapture";
 const navigation = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/tools", label: "Tools" },
   { href: "/content", label: "Content" },
 ];
 
