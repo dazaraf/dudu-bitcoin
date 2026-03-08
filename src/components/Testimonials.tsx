@@ -26,39 +26,21 @@ const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "He has a rare ability to translate complex Bitcoin concepts into actionable business strategy. A true thought leader.",
-    name: "Sarah Chen",
-    role: "Head of Digital Assets",
-    company: "Meridian Capital",
-    initials: "SC",
-    color: "bg-[#6366F1]",
+      "It's always a treat to join Dudu for a livestream. His energy and deep knowledge make every session engaging and insightful.",
+    name: "Anton Golub",
+    role: "Founder",
+    company: "RWALabs.ae",
+    image: "/testimonials/antongolub.jpeg",
+    logo: "/testimonials/rwalabs-blue_white_gradient.webp",
   },
   {
     quote:
-      "Working with Dudu transformed our understanding of Bitcoin's role in our treasury. The ROI speaks for itself.",
-    name: "Michael Ndlovu",
-    role: "CFO",
-    company: "Kibo Ventures",
-    initials: "MN",
-    color: "bg-[#10B981]",
-  },
-  {
-    quote:
-      "His workshops gave our entire leadership team the confidence to move forward with our Bitcoin strategy.",
-    name: "Anika Patel",
-    role: "CEO",
-    company: "Lumina Labs",
-    initials: "AP",
-    color: "bg-[#F43F5E]",
-  },
-  {
-    quote:
-      "Dudu doesn't just advise — he educates. Our team went from skeptics to advocates in a single quarter.",
-    name: "David Herrera",
-    role: "VP of Innovation",
-    company: "Atlas Corp",
-    initials: "DH",
-    color: "bg-[#8B5CF6]",
+      "Dudu always brought high caliber guests as a cohost of our show for years. His ability to elevate every conversation is unmatched.",
+    name: "Mati Greenspan",
+    role: "Founder & CEO",
+    company: "Quantum Economics",
+    image: "/testimonials/matigreenspan.jpeg",
+    logo: "/testimonials/quantum_economics_cover.jpeg",
   },
 ];
 

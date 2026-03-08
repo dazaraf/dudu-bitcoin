@@ -8,6 +8,7 @@ import Testimonials from "@/components/Testimonials";
 import Button from "@/components/Button";
 import RotatingSubtitle from "@/components/RotatingSubtitle";
 import Link from "next/link";
+import Image from "next/image";
 
 const whatIDo = [
   {
@@ -108,19 +109,14 @@ export default function Home() {
       >
         {/* Meme Row */}
         <ScrollReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10 max-w-[700px] mx-auto">
-            <div className="meme-box">
-              <span className="meme-emoji">👩‍💻</span>
-              <span className="meme-label">What my mom thinks I do</span>
-            </div>
-            <div className="meme-box">
-              <span className="meme-emoji">🤝</span>
-              <span className="meme-label">What LinkedIn thinks I do</span>
-            </div>
-            <div className="meme-box">
-              <span className="meme-emoji">🐸</span>
-              <span className="meme-label">What I actually do</span>
-            </div>
+          <div className="mb-10 max-w-[700px] mx-auto">
+            <Image
+              src="/homepage-meme.png"
+              alt="What do you do, Dudu?"
+              width={700}
+              height={400}
+              className="w-full h-auto rounded-2xl"
+            />
           </div>
         </ScrollReveal>
 
