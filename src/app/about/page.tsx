@@ -47,28 +47,13 @@ const timelineEntries = [
   },
 ];
 
-const highlightCards = [
-  {
-    icon: <span>&#x1F3C6;</span>,
-    title: "Top Ambassador — Lombard Finance",
-    description:
-      "Building mindshare for their $1 billion TGE as the project's top community ambassador.",
-  },
-  {
-    icon: <span>&#x1F525;</span>,
-    title: "Going Viral in Abu Dhabi",
-    description:
-      "A single post from the Abu Dhabi conference hit 300k views — proving that authentic content wins.",
-  },
-  {
-    icon: <span>&#x1F399;&#xFE0F;</span>,
-    title: "100+ Live Events Hosted",
-    description:
-      "Deep-dive conversations with tier 1 guests from Chainlink, Arbitrum, Lombard, and more.",
-  },
-];
-
 const thesisCards = [
+  {
+    icon: <span>&#x20BF;</span>,
+    title: "Bitcoin Is the Reserve Currency of the Agentic Future",
+    description:
+      "As AI agents transact autonomously, they need a permissionless, programmable, globally accepted money. Bitcoin is the only asset that fits — neutral, scarce, and unstoppable.",
+  },
   {
     icon: <span>&#x2728;</span>,
     title: "The Age of Abundance Is Here",
@@ -215,33 +200,25 @@ export default function AboutPage() {
         </section>
       </ScrollReveal>
 
-      {/* 3. 2025 Highlights */}
+      {/* 3. Credentials */}
       <ScrollReveal>
-        <Section
-          title="2025 Highlights"
-          subtitle="A few wins from the past year."
-        >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {highlightCards.map((card) => (
-              <Card
-                key={card.title}
-                icon={card.icon}
-                title={card.title}
-                description={card.description}
-              />
-            ))}
-          </div>
-        </Section>
+        <SocialProof
+          stats={[
+            { value: "50+", label: "Expert Conversations" },
+            { value: "11K", label: "LinkedIn Network" },
+            { value: "500K+", label: "Lifetime Views" },
+          ]}
+        />
       </ScrollReveal>
 
       {/* 4. What I Believe */}
       <ScrollReveal>
         <Section
           title="What I Believe"
-          subtitle="Three theses that drive everything I build."
+          subtitle="Four theses that drive everything I build."
           variant="light"
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {thesisCards.map((card) => (
               <Card
                 key={card.title}
@@ -252,17 +229,6 @@ export default function AboutPage() {
             ))}
           </div>
         </Section>
-      </ScrollReveal>
-
-      {/* 5. Credentials */}
-      <ScrollReveal>
-        <SocialProof
-          stats={[
-            { value: "50+", label: "Expert Conversations" },
-            { value: "11K", label: "LinkedIn Network" },
-            { value: "500K+", label: "Lifetime Views" },
-          ]}
-        />
       </ScrollReveal>
 
       {/* 6. CTA */}

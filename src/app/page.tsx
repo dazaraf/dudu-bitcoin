@@ -109,12 +109,12 @@ export default function Home() {
       >
         {/* Meme Row */}
         <ScrollReveal>
-          <div className="mb-10 max-w-[700px] mx-auto">
+          <div className="mb-10 max-w-[480px] mx-auto">
             <Image
               src="/homepage-meme.png"
               alt="What do you do, Dudu?"
-              width={700}
-              height={400}
+              width={480}
+              height={274}
               className="w-full h-auto rounded-2xl"
             />
           </div>
@@ -195,7 +195,7 @@ export default function Home() {
             <p className="text-lg text-fog mb-10 text-balance">
               Whether you&apos;re a founder looking for your edge, a team that needs to understand what&apos;s coming, or an event that wants the signal. I&apos;d love to hear what you&apos;re working on.
             </p>
-            <Button variant="primary" size="lg" href="https://calendly.com/dudu-bitcoin/30min">
+            <Button variant="primary" size="lg" href="https://calendly.com/dazaraf/meet-dudu">
               Grab 30 Minutes with Dudu
             </Button>
           </div>

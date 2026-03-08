@@ -1,86 +1,37 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import Section from "@/components/Section";
 import EmailCapture from "@/components/EmailCapture";
-import ContentPageClient from "./ContentPageClient";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Content & Webinars | Dudu Bitcoin",
+  title: "Content & Research | Dudu Bitcoin",
   description:
-    "Insights on the agentic economy, AI, macro, and Bitcoin. Webinars, articles, and livestreams from Dudu Bitcoin.",
+    "Free Bitcoin infographics, deep-dive research reports, and insights on the agentic economy from Dudu Bitcoin.",
   openGraph: {
     type: "website",
-    title: "Content & Webinars | Dudu Bitcoin",
+    title: "Content & Research | Dudu Bitcoin",
     description:
-      "Insights on the agentic economy, AI, macro, and Bitcoin. Webinars, articles, and livestreams from Dudu Bitcoin.",
+      "Free Bitcoin infographics, deep-dive research reports, and insights on the agentic economy from Dudu Bitcoin.",
     url: "/content",
   },
 };
 
-const featuredContent = {
-  title:
-    "The Agentic Economy Thesis: Why AI Agents Will Become Economic Participants",
-  date: "Feb 12, 2026",
-  category: "Webinar",
-  excerpt:
-    "The defining thesis of the next decade: AI agents won't just assist humans — they'll become autonomous economic actors. In this deep-dive webinar, I break down the infrastructure, incentives, and implications for founders building in this new paradigm.",
-  locked: false,
-};
-
-const allContent = [
+const infographics = [
   {
-    title: "How AI Agents Will Replace 80% of SaaS",
-    date: "Feb 17, 2026",
-    category: "Article",
-    excerpt:
-      "The SaaS model is built on humans clicking buttons. When agents can do the clicking, the entire category gets repriced.",
-
-    locked: false,
+    title: "Who Holds The Most Bitcoin?",
+    description:
+      "A breakdown of the largest Bitcoin holders — from Satoshi to sovereign nations.",
+    image: "/top-bitcoin-holders.jpeg",
+    updated: "Updated regularly",
   },
   {
-    title: "Bitcoin as Settlement Layer for Autonomous Agents",
-    date: "Feb 14, 2026",
-    category: "Webinar",
-    excerpt:
-      "Why Bitcoin's programmable settlement layer is the natural home for agent-to-agent transactions at scale.",
-
-    locked: true,
-  },
-  {
-    title: "Building Distribution as a Solo Creator",
-    date: "Feb 10, 2026",
-    category: "Livestream",
-    excerpt:
-      "A candid 90-minute session on how I built an audience and 500K views without a team, budget, or ad spend.",
-
-    locked: false,
-  },
-  {
-    title: "Signal vs Noise: Separating AI Hype from Reality",
-    date: "Feb 7, 2026",
-    category: "Article",
-    excerpt:
-      "A framework for evaluating AI claims, filtering genuine breakthroughs from marketing theater.",
-
-    locked: true,
-  },
-  {
-    title: "The 80/20 Rule for AI-Native Founders",
-    date: "Feb 3, 2026",
-    category: "Webinar",
-    excerpt:
-      "How to structure your startup so AI handles 80% of execution while you focus on the 20% that creates real moats.",
-
-    locked: true,
-  },
-  {
-    title: "Macro Trends Shaping the Agentic Economy in 2026",
-    date: "Jan 28, 2026",
-    category: "Livestream",
-    excerpt:
-      "Geopolitics, interest rates, regulation, and compute — the macro forces that will determine which AI ventures survive.",
-
-    locked: false,
+    title: "Bitcoin Flippening Watch",
+    description:
+      "Tracking Bitcoin's race to become the #1 asset on earth by market cap.",
+    image: "/bitcoin-flippening.jpeg",
+    updated: "Updated regularly",
   },
 ];
 
@@ -103,25 +54,90 @@ export default function ContentPage() {
 
         <div className="relative z-10 max-w-[900px] mx-auto px-4 sm:px-6 text-center">
           <h1 className="text-4xl sm:text-5xl md:text-[64px] font-bold leading-[1.1] tracking-tight text-obsidian mb-6 text-balance">
-            Content &amp; Webinars
+            Content &amp; Research
           </h1>
           <p className="text-lg md:text-xl text-fog max-w-[640px] mx-auto leading-relaxed text-balance">
-            Insights on the agentic economy, AI, macro, and Bitcoin.
+            Free infographics, deep-dive reports, and insights on Bitcoin and
+            the agentic economy.
           </p>
         </div>
       </section>
 
-      {/* 2. Featured Content */}
+      {/* 2. Signature Charts */}
       <ScrollReveal>
-        <Section title="Featured">
-          <div
-            className="max-w-[900px] overflow-hidden rounded-xl border border-card-border bg-white shadow-sm"
+        <Section title="Signature Charts" subtitle="Free infographics — updated regularly.">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[900px]">
+            {infographics.map((item) => (
+              <div
+                key={item.title}
+                className="group overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className="relative aspect-square overflow-hidden bg-obsidian">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <span className="absolute top-3 right-3 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-full bg-green-50 text-green-700 border border-green-200">
+                    Free
+                  </span>
+                </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-bold text-obsidian mb-1">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-fog leading-relaxed mb-2">
+                    {item.description}
+                  </p>
+                  <span className="text-xs text-primary font-medium">
+                    {item.updated}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Section>
+      </ScrollReveal>
+
+      {/* 3. Deep Dives */}
+      <ScrollReveal>
+        <Section
+          title="Deep Dives"
+          subtitle="In-depth research and analysis."
+          variant="light"
+        >
+          <Link
+            href="/content/gtm-report"
+            className="block max-w-[900px] overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow group"
           >
-            {/* Thumbnail area */}
-            <div className="relative aspect-[21/9] overflow-hidden bg-surface">
-              <div className="w-full h-full flex items-center justify-center text-card-border">
+            <div className="relative aspect-[21/9] overflow-hidden bg-gradient-to-br from-obsidian to-obsidian/80 flex items-center justify-center">
+              <div className="text-center px-6">
+                <span className="inline-block text-xs font-mono uppercase tracking-[0.25em] text-primary bg-primary/10 px-2.5 py-1 rounded mb-3">
+                  GTM Intelligence Report
+                </span>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white text-balance">
+                  How Lying AI Became The Next Trillion Dollar Global Problem
+                </h3>
+              </div>
+              <span className="absolute bottom-4 left-4 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-full bg-primary text-white">
+                Report
+              </span>
+              <span className="absolute bottom-4 right-4 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-full bg-amber-50 text-amber-700 border border-amber-200">
+                Email to Unlock
+              </span>
+            </div>
+            <div className="p-6 md:p-8">
+              <p className="text-sm text-fog leading-relaxed max-w-[720px]">
+                Enterprises will spend $2.5 trillion on AI this year. Who&apos;s
+                verifying that the AIs are telling the truth? A deep-dive into
+                the trust deficit, verification approaches, competitive
+                landscape, and GTM strategy.
+              </p>
+              <span className="inline-flex items-center gap-1 mt-4 text-sm font-semibold text-primary group-hover:underline">
+                Read the teaser
                 <svg
-                  className="w-20 h-20"
+                  className="w-4 h-4 transition-transform group-hover:translate-x-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -129,47 +145,19 @@ export default function ContentPage() {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={1}
-                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1}
-                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
                   />
                 </svg>
-              </div>
-              <span className="absolute bottom-4 left-4 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-full bg-primary text-white">
-                {featuredContent.category}
-              </span>
-              <span className="absolute bottom-4 right-4 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-full bg-green-50 text-green-700 border border-green-200">
-                Free
               </span>
             </div>
-            <div className="p-6 md:p-8">
-              <time className="text-xs text-fog mb-2 block">
-                {featuredContent.date}
-              </time>
-              <h3 className="text-xl md:text-2xl font-bold text-obsidian mb-3 text-balance">
-                {featuredContent.title}
-              </h3>
-              <p className="text-sm text-fog leading-relaxed max-w-[720px]">
-                {featuredContent.excerpt}
-              </p>
-            </div>
-          </div>
+          </Link>
         </Section>
       </ScrollReveal>
 
-      {/* 3 & 4. Filter Tabs + Content Grid (client component) */}
+      {/* 4. Newsletter CTA */}
       <ScrollReveal>
-        <ContentPageClient content={allContent} />
-      </ScrollReveal>
-
-      {/* 5. Newsletter CTA */}
-      <ScrollReveal>
-        <Section variant="light">
+        <Section>
           <EmailCapture
             headline="Never miss an insight"
             subtext="Get my best thinking on AI, macro, and the agentic economy — straight to your inbox."
@@ -179,7 +167,6 @@ export default function ContentPage() {
           </p>
         </Section>
       </ScrollReveal>
-
     </>
   );
 }
