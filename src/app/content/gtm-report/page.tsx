@@ -3,14 +3,14 @@ import ScrollReveal from "@/components/ScrollReveal";
 import GtmReportClient from "./GtmReportClient";
 
 export const metadata: Metadata = {
-  title: "How Lying AI Became The Next Trillion Dollar Problem | Dudu Bitcoin",
+  title: "$2.5T Spent on AI. Zero Way to Verify It. | Dudu Bitcoin",
   description:
-    "Enterprises will spend $2.5 trillion on AI this year. Who's verifying the AIs are telling the truth? A deep-dive GTM intelligence report.",
+    "Original research on the AI verification gap — why zero-knowledge cryptography is the only fix, who's building it, and where the market is headed.",
   openGraph: {
     type: "article",
-    title: "How Lying AI Became The Next Trillion Dollar Problem",
+    title: "$2.5T Spent on AI. Zero Way to Verify It.",
     description:
-      "Enterprises will spend $2.5 trillion on AI this year. Who's verifying the AIs are telling the truth?",
+      "Original research on the AI verification gap — why zero-knowledge cryptography is the only fix, who's building it, and where the market is headed.",
     url: "/content/gtm-report",
   },
 };
@@ -33,15 +33,14 @@ export default function GtmReportPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
 
         <div className="relative z-10 max-w-[900px] mx-auto px-4 sm:px-6 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
-            GTM Intelligence Report
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary text-white text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
+            Alpha Report
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight text-obsidian mb-4 text-balance">
-            How Lying AI Became The Next Trillion Dollar Global Problem
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black leading-[1.1] tracking-tight text-obsidian mb-4 text-balance">
+            $2.5T Spent on AI.<br />Zero Way to Verify It.
           </h1>
           <p className="text-lg md:text-xl text-fog max-w-[640px] mx-auto leading-relaxed text-balance">
-            Enterprises will spend $2.5 trillion on AI this year. Who&apos;s
-            verifying that the AIs are telling the truth?
+            Original research on the AI verification gap — who&apos;s building the fix, who&apos;s funding it, and where zero-knowledge cryptography changes everything.
           </p>
         </div>
       </section>

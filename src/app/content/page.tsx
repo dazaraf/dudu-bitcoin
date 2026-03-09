@@ -10,12 +10,12 @@ import FlippeningChart from "@/components/FlippeningChart";
 export const metadata: Metadata = {
   title: "Content & Research | Dudu Bitcoin",
   description:
-    "Free Bitcoin infographics, deep-dive research reports, and insights on the agentic economy from Dudu Bitcoin.",
+    "Original research on AI verification and zero-knowledge cryptography, plus live Bitcoin data tools. From Dudu Bitcoin.",
   openGraph: {
     type: "website",
     title: "Content & Research | Dudu Bitcoin",
     description:
-      "Free Bitcoin infographics, deep-dive research reports, and insights on the agentic economy from Dudu Bitcoin.",
+      "Original research on AI verification and zero-knowledge cryptography, plus live Bitcoin data tools. From Dudu Bitcoin.",
     url: "/content",
   },
 };
@@ -44,15 +44,67 @@ export default async function ContentPage() {
             Content &amp; Research
           </h1>
           <p className="text-lg md:text-xl text-fog max-w-[640px] mx-auto leading-relaxed text-balance">
-            Free infographics, deep-dive reports, and insights on Bitcoin and
+            Original research, live data tools, and insights on Bitcoin and
             the agentic economy.
           </p>
         </div>
       </section>
 
-      {/* 2. Signature Charts — live, dynamic */}
+      {/* 2. Intelligence Briefing — report gets top billing */}
       <ScrollReveal>
-        <Section title="Signature Charts" subtitle="Live data — updated every 5 minutes.">
+        <Section
+          title="Intelligence Briefing"
+          subtitle="Original research you won't find anywhere else."
+        >
+          <Link
+            href="/content/gtm-report"
+            className="group block max-w-[900px] overflow-hidden rounded-xl border border-card-border bg-obsidian shadow-sm hover:shadow-lg transition-shadow"
+          >
+            <div className="p-8 sm:p-10 md:p-12">
+              <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full bg-primary text-white mb-5">
+                Alpha Report
+              </span>
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight mb-4 text-balance">
+                $2.5T Spent on AI.<br />Zero Way to Verify It.
+              </h3>
+              <p className="text-sm sm:text-base text-white/50 max-w-[600px] leading-relaxed mb-6">
+                Enterprises are pouring trillions into AI systems they fundamentally cannot verify. Zero-knowledge cryptography changes that equation entirely. This report maps the competitive landscape, breaks down the GTM strategies, and identifies where the real leverage sits.
+              </p>
+
+              <ul className="text-sm text-white/40 space-y-2 mb-8 max-w-[500px]">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">&#x25B8;</span>
+                  Why ZK proofs are the only viable path to AI trust
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">&#x25B8;</span>
+                  Competitive landscape: who&apos;s building verification infrastructure
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">&#x25B8;</span>
+                  A GTM playbook for the $2.5T trust gap
+                </li>
+              </ul>
+
+              <div className="flex items-center gap-4">
+                <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white font-semibold text-sm group-hover:brightness-110 transition-all">
+                  Unlock the Research
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+                <span className="text-[10px] text-white/25 uppercase tracking-wider">
+                  Free with email
+                </span>
+              </div>
+            </div>
+          </Link>
+        </Section>
+      </ScrollReveal>
+
+      {/* 3. Live Data Tools */}
+      <ScrollReveal>
+        <Section title="Live Data Tools" subtitle="Free charts — updated every 5 minutes." variant="light">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[900px]">
             {/* Bitcoin Holders */}
             <Link
@@ -70,18 +122,8 @@ export default async function ContentPage() {
                 </p>
                 <span className="inline-flex items-center gap-1 text-xs text-primary font-medium group-hover:underline">
                   View full breakdown
-                  <svg
-                    className="w-3 h-3 transition-transform group-hover:translate-x-0.5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
+                  <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </span>
               </div>
@@ -103,78 +145,13 @@ export default async function ContentPage() {
                 </p>
                 <span className="inline-flex items-center gap-1 text-xs text-primary font-medium group-hover:underline">
                   View live tracker
-                  <svg
-                    className="w-3 h-3 transition-transform group-hover:translate-x-0.5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
+                  <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </span>
               </div>
             </Link>
           </div>
-        </Section>
-      </ScrollReveal>
-
-      {/* 3. Deep Dives */}
-      <ScrollReveal>
-        <Section
-          title="Deep Dives"
-          subtitle="In-depth research and analysis."
-          variant="light"
-        >
-          <Link
-            href="/content/gtm-report"
-            className="block max-w-[900px] overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow group"
-          >
-            <div className="relative aspect-[21/9] overflow-hidden bg-gradient-to-br from-obsidian to-obsidian/80 flex items-center justify-center">
-              <div className="text-center px-6">
-                <span className="inline-block text-xs font-mono uppercase tracking-[0.25em] text-primary bg-primary/10 px-2.5 py-1 rounded mb-3">
-                  GTM Intelligence Report
-                </span>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white text-balance">
-                  How Lying AI Became The Next Trillion Dollar Global Problem
-                </h3>
-              </div>
-              <span className="absolute bottom-4 left-4 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-full bg-primary text-white">
-                Report
-              </span>
-              <span className="absolute bottom-4 right-4 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-full bg-amber-50 text-amber-700 border border-amber-200">
-                Email to Unlock
-              </span>
-            </div>
-            <div className="p-6 md:p-8">
-              <p className="text-sm text-fog leading-relaxed max-w-[720px]">
-                Enterprises will spend $2.5 trillion on AI this year. Who&apos;s
-                verifying that the AIs are telling the truth? A deep-dive into
-                the trust deficit, verification approaches, competitive
-                landscape, and GTM strategy.
-              </p>
-              <span className="inline-flex items-center gap-1 mt-4 text-sm font-semibold text-primary group-hover:underline">
-                Read the teaser
-                <svg
-                  className="w-4 h-4 transition-transform group-hover:translate-x-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </span>
-            </div>
-          </Link>
         </Section>
       </ScrollReveal>
 

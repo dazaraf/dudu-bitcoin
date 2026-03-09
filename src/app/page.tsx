@@ -7,9 +7,6 @@ import ScrollReveal from "@/components/ScrollReveal";
 import Testimonials from "@/components/Testimonials";
 import Button from "@/components/Button";
 import RotatingSubtitle from "@/components/RotatingSubtitle";
-import { fetchBtcMarketData } from "@/lib/bitcoin-data";
-import BitcoinHoldersChart from "@/components/BitcoinHoldersChart";
-import FlippeningChart from "@/components/FlippeningChart";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -66,8 +63,7 @@ const whatIDo = [
 ];
 
 
-export default async function Home() {
-  const btcData = await fetchBtcMarketData();
+export default function Home() {
   return (
     <>
       {/* 1. Hero */}
@@ -118,59 +114,81 @@ export default async function Home() {
       </ScrollReveal>
 
       {/* 5. Fresh Signal */}
-      <Section title="Fresh Signal" subtitle="Live charts and research — updated automatically." padding="md">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Bitcoin Holders card */}
+      <Section title="Fresh Signal" subtitle="Original research and live data tools." padding="md">
+        {/* Hero: Alpha Report */}
+        <ScrollReveal>
+          <Link
+            href="/content/gtm-report"
+            className="group block max-w-[900px] overflow-hidden rounded-xl border border-card-border bg-obsidian shadow-sm hover:shadow-lg transition-shadow mb-6"
+          >
+            <div className="p-8 sm:p-10 md:p-12">
+              <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full bg-primary text-white mb-4">
+                Alpha Report
+              </span>
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight mb-3 text-balance">
+                $2.5T Spent on AI.<br />Zero Way to Verify It.
+              </h3>
+              <p className="text-sm sm:text-base text-white/50 max-w-[600px] leading-relaxed mb-6">
+                Original research on the AI verification gap — who&apos;s building the fix, who&apos;s funding it, and where zero-knowledge cryptography changes everything.
+              </p>
+              <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:underline">
+                Unlock the Research
+                <svg
+                  className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </div>
+          </Link>
+        </ScrollReveal>
+
+        {/* Supporting: Live Data Tools */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[900px]">
           <ScrollReveal>
             <Link
               href="/content/bitcoin-holders"
-              className="group block overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow h-full"
+              className="group flex items-center gap-4 p-4 rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow"
             >
-              <BitcoinHoldersChart btcData={btcData} compact />
-              <div className="p-4">
-                <h3 className="text-sm font-bold text-obsidian">Who Holds The Most Bitcoin?</h3>
-                <p className="text-xs text-fog mt-1">Live breakdown of the largest BTC holders</p>
+              <div className="w-12 h-12 rounded-lg bg-obsidian flex items-center justify-center shrink-0">
+                <span className="text-primary font-bold text-lg">₿</span>
               </div>
+              <div className="min-w-0">
+                <h3 className="text-sm font-bold text-obsidian group-hover:text-primary transition-colors">
+                  Who Holds The Most Bitcoin?
+                </h3>
+                <p className="text-xs text-fog mt-0.5">Live data — updated every 5 min</p>
+              </div>
+              <svg className="w-4 h-4 text-fog shrink-0 ml-auto transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </Link>
           </ScrollReveal>
 
-          {/* Flippening card */}
           <ScrollReveal delay={100}>
             <Link
               href="/content/flippening"
-              className="group block overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow h-full"
+              className="group flex items-center gap-4 p-4 rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow"
             >
-              <FlippeningChart btcData={btcData} compact />
-              <div className="p-4">
-                <h3 className="text-sm font-bold text-obsidian">Bitcoin Flippening Watch</h3>
-                <p className="text-xs text-fog mt-1">Tracking BTC&apos;s race to #1 asset on earth</p>
+              <div className="w-12 h-12 rounded-lg bg-obsidian flex items-center justify-center shrink-0">
+                <span className="text-primary font-bold text-lg">#1</span>
               </div>
-            </Link>
-          </ScrollReveal>
-
-          {/* GTM Report card */}
-          <ScrollReveal delay={200}>
-            <Link
-              href="/content/gtm-report"
-              className="group block overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow h-full"
-            >
-              <div className="aspect-[4/3] bg-gradient-to-br from-obsidian to-obsidian/80 flex items-center justify-center p-6">
-                <div className="text-center">
-                  <span className="inline-block text-[10px] font-mono uppercase tracking-[0.25em] text-primary bg-primary/10 px-2 py-0.5 rounded mb-2">
-                    GTM Report
-                  </span>
-                  <h3 className="text-base sm:text-lg font-bold text-white text-balance leading-snug">
-                    How Lying AI Became The Next Trillion Dollar Problem
-                  </h3>
-                </div>
+              <div className="min-w-0">
+                <h3 className="text-sm font-bold text-obsidian group-hover:text-primary transition-colors">
+                  Bitcoin Flippening Watch
+                </h3>
+                <p className="text-xs text-fog mt-0.5">BTC vs Gold, Apple, NVIDIA &amp; more</p>
               </div>
-              <div className="p-4">
-                <h3 className="text-sm font-bold text-obsidian">Deep Dive: AI Trust Deficit</h3>
-                <p className="text-xs text-fog mt-1">Email-gated research report</p>
-              </div>
+              <svg className="w-4 h-4 text-fog shrink-0 ml-auto transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </Link>
           </ScrollReveal>
         </div>
+
         <div className="mt-10 text-center">
           <Link
             href="/content"
