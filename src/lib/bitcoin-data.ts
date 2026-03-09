@@ -25,19 +25,20 @@ export async function fetchBtcMarketData(): Promise<BtcMarketData> {
   };
 }
 
-// Top Bitcoin holders — updated periodically (in thousands of BTC)
+// Top Bitcoin holders — updated 2026-03-09 via bitbo.io/treasuries
+// Values in thousands of BTC
 export const TOP_HOLDERS = [
   { name: "Satoshi", btc: 1100, type: "individual" as const },
   { name: "Coinbase", btc: 885, type: "exchange" as const },
-  { name: "BlackRock", btc: 762, type: "etf" as const },
-  { name: "Strategy", btc: 714, type: "company" as const },
+  { name: "BlackRock", btc: 774, type: "etf" as const },
+  { name: "Strategy", btc: 739, type: "company" as const },
   { name: "Binance", btc: 629, type: "exchange" as const },
   { name: "Bitfinex", btc: 390, type: "exchange" as const },
   { name: "USA", btc: 198, type: "nation" as const },
   { name: "China", btc: 194, type: "nation" as const },
-  { name: "Fidelity", btc: 191, type: "etf" as const },
+  { name: "Fidelity", btc: 185, type: "etf" as const },
   { name: "Robinhood", btc: 177, type: "exchange" as const },
-  { name: "Grayscale", btc: 158, type: "etf" as const },
+  { name: "Grayscale", btc: 156, type: "etf" as const },
   { name: "Block.one", btc: 140, type: "company" as const },
 ];
 
