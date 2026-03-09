@@ -95,12 +95,7 @@ export default function EmailGate({ teaser, children }: EmailGateProps) {
   }
 
   if (unlocked) {
-    return (
-      <>
-        {teaser}
-        {children}
-      </>
-    );
+    return <>{children}</>;
   }
 
   return (
