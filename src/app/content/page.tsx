@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Section from "@/components/Section";
 import EmailCapture from "@/components/EmailCapture";
 import ScrollReveal from "@/components/ScrollReveal";
+import { fetchBtcMarketData } from "@/lib/bitcoin-data";
+import BitcoinHoldersChart from "@/components/BitcoinHoldersChart";
+import FlippeningChart from "@/components/FlippeningChart";
 
 export const metadata: Metadata = {
   title: "Content & Research | Dudu Bitcoin",
@@ -18,24 +20,9 @@ export const metadata: Metadata = {
   },
 };
 
-const infographics = [
-  {
-    title: "Who Holds The Most Bitcoin?",
-    description:
-      "A breakdown of the largest Bitcoin holders — from Satoshi to sovereign nations.",
-    image: "/top-bitcoin-holders.jpeg",
-    updated: "Updated regularly",
-  },
-  {
-    title: "Bitcoin Flippening Watch",
-    description:
-      "Tracking Bitcoin's race to become the #1 asset on earth by market cap.",
-    image: "/bitcoin-flippening.jpeg",
-    updated: "Updated regularly",
-  },
-];
+export default async function ContentPage() {
+  const btcData = await fetchBtcMarketData();
 
-export default function ContentPage() {
   return (
     <>
       {/* 1. Hero */}
@@ -63,39 +50,75 @@ export default function ContentPage() {
         </div>
       </section>
 
-      {/* 2. Signature Charts */}
+      {/* 2. Signature Charts — live, dynamic */}
       <ScrollReveal>
-        <Section title="Signature Charts" subtitle="Free infographics — updated regularly.">
+        <Section title="Signature Charts" subtitle="Live data — updated every 5 minutes.">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[900px]">
-            {infographics.map((item) => (
-              <div
-                key={item.title}
-                className="group overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="relative aspect-square overflow-hidden bg-obsidian">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <span className="absolute top-3 right-3 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-full bg-green-50 text-green-700 border border-green-200">
-                    Free
-                  </span>
-                </div>
-                <div className="p-5">
-                  <h3 className="text-lg font-bold text-obsidian mb-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-fog leading-relaxed mb-2">
-                    {item.description}
-                  </p>
-                  <span className="text-xs text-primary font-medium">
-                    {item.updated}
-                  </span>
-                </div>
+            {/* Bitcoin Holders */}
+            <Link
+              href="/content/bitcoin-holders"
+              className="group block overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow"
+            >
+              <BitcoinHoldersChart btcData={btcData} compact />
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-obsidian mb-1">
+                  Who Holds The Most Bitcoin?
+                </h3>
+                <p className="text-sm text-fog leading-relaxed mb-2">
+                  A breakdown of the largest Bitcoin holders — from Satoshi to
+                  sovereign nations.
+                </p>
+                <span className="inline-flex items-center gap-1 text-xs text-primary font-medium group-hover:underline">
+                  View full breakdown
+                  <svg
+                    className="w-3 h-3 transition-transform group-hover:translate-x-0.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </span>
               </div>
-            ))}
+            </Link>
+
+            {/* Flippening Watch */}
+            <Link
+              href="/content/flippening"
+              className="group block overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow"
+            >
+              <FlippeningChart btcData={btcData} compact />
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-obsidian mb-1">
+                  Bitcoin Flippening Watch
+                </h3>
+                <p className="text-sm text-fog leading-relaxed mb-2">
+                  Tracking Bitcoin&apos;s race to become the #1 asset on earth by
+                  market cap.
+                </p>
+                <span className="inline-flex items-center gap-1 text-xs text-primary font-medium group-hover:underline">
+                  View live tracker
+                  <svg
+                    className="w-3 h-3 transition-transform group-hover:translate-x-0.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </Link>
           </div>
         </Section>
       </ScrollReveal>
