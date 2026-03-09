@@ -1,12 +1,15 @@
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 import Card from "@/components/Card";
-import ContentCard from "@/components/ContentCard";
 import EmailCapture from "@/components/EmailCapture";
+
 import ScrollReveal from "@/components/ScrollReveal";
 import Testimonials from "@/components/Testimonials";
 import Button from "@/components/Button";
 import RotatingSubtitle from "@/components/RotatingSubtitle";
+import { fetchBtcMarketData } from "@/lib/bitcoin-data";
+import BitcoinHoldersChart from "@/components/BitcoinHoldersChart";
+import FlippeningChart from "@/components/FlippeningChart";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -62,36 +65,9 @@ const whatIDo = [
   },
 ];
 
-const latestContent = [
-  {
-    title: "The Agentic Economy Is Here: What Founders Need to Know in 2026",
-    date: "Feb 14, 2026",
-    category: "Webinar",
-    excerpt:
-      "A deep dive into how autonomous agents are creating new business models and what it means for your next startup.",
-    locked: true,
-    href: "/content",
-  },
-  {
-    title: "Why AI Abundance Makes Human Taste the Scarcest Asset",
-    date: "Feb 10, 2026",
-    category: "Article",
-    excerpt:
-      "When AI can produce infinite content, the bottleneck shifts to curation, taste, and trust.",
-    href: "/content",
-  },
-  {
-    title: "Live: Building an AI Agent from Scratch — No Code, Full Stack",
-    date: "Feb 7, 2026",
-    category: "Livestream",
-    excerpt:
-      "Watch the full recording of our 2-hour build session where we shipped a working agent live.",
-    locked: true,
-    href: "/content",
-  },
-];
 
-export default function Home() {
+export default async function Home() {
+  const btcData = await fetchBtcMarketData();
   return (
     <>
       {/* 1. Hero */}
@@ -142,20 +118,58 @@ export default function Home() {
       </ScrollReveal>
 
       {/* 5. Fresh Signal */}
-      <Section title="Fresh Signal" padding="md">
+      <Section title="Fresh Signal" subtitle="Live charts and research — updated automatically." padding="md">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {latestContent.map((item, i) => (
-            <ScrollReveal key={item.title} delay={i * 100}>
-              <ContentCard
-                title={item.title}
-                date={item.date}
-                category={item.category}
-                excerpt={item.excerpt}
-                locked={item.locked}
-                href={item.href}
-              />
-            </ScrollReveal>
-          ))}
+          {/* Bitcoin Holders card */}
+          <ScrollReveal>
+            <Link
+              href="/content/bitcoin-holders"
+              className="group block overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow h-full"
+            >
+              <BitcoinHoldersChart btcData={btcData} compact />
+              <div className="p-4">
+                <h3 className="text-sm font-bold text-obsidian">Who Holds The Most Bitcoin?</h3>
+                <p className="text-xs text-fog mt-1">Live breakdown of the largest BTC holders</p>
+              </div>
+            </Link>
+          </ScrollReveal>
+
+          {/* Flippening card */}
+          <ScrollReveal delay={100}>
+            <Link
+              href="/content/flippening"
+              className="group block overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow h-full"
+            >
+              <FlippeningChart btcData={btcData} compact />
+              <div className="p-4">
+                <h3 className="text-sm font-bold text-obsidian">Bitcoin Flippening Watch</h3>
+                <p className="text-xs text-fog mt-1">Tracking BTC&apos;s race to #1 asset on earth</p>
+              </div>
+            </Link>
+          </ScrollReveal>
+
+          {/* GTM Report card */}
+          <ScrollReveal delay={200}>
+            <Link
+              href="/content/gtm-report"
+              className="group block overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow h-full"
+            >
+              <div className="aspect-[4/3] bg-gradient-to-br from-obsidian to-obsidian/80 flex items-center justify-center p-6">
+                <div className="text-center">
+                  <span className="inline-block text-[10px] font-mono uppercase tracking-[0.25em] text-primary bg-primary/10 px-2 py-0.5 rounded mb-2">
+                    GTM Report
+                  </span>
+                  <h3 className="text-base sm:text-lg font-bold text-white text-balance leading-snug">
+                    How Lying AI Became The Next Trillion Dollar Problem
+                  </h3>
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="text-sm font-bold text-obsidian">Deep Dive: AI Trust Deficit</h3>
+                <p className="text-xs text-fog mt-1">Email-gated research report</p>
+              </div>
+            </Link>
+          </ScrollReveal>
         </div>
         <div className="mt-10 text-center">
           <Link

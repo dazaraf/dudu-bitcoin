@@ -132,6 +132,9 @@ export default function Footer() {
         <p className="text-xs text-white/30 text-center">
           &copy; {new Date().getFullYear()} Dudu Bitcoin. All rights reserved.
         </p>
+        <p className="text-[10px] text-white/20 text-center mt-1">
+          Of course I vibe coded this — what do you think I am, Amish?
+        </p>
       </div>
     </footer>
   );

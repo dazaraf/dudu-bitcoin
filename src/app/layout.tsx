@@ -4,7 +4,6 @@ import "./globals.css";
 import Script from "next/script";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import LeadMagnetPopup from "@/components/LeadMagnetPopup";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -97,7 +96,6 @@ gtag('config', 'G-1HY2RZP2Y1');`}
         <Navigation />
         <main id="main-content" className="min-h-screen pt-[72px]">{children}</main>
         <Footer />
-        <LeadMagnetPopup />
       </body>
     </html>
   );
