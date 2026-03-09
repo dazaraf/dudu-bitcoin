@@ -132,11 +132,6 @@ export default function Home() {
             </ScrollReveal>
           ))}
         </div>
-        <div className="mt-12 text-center max-w-[700px] mx-auto">
-          <p className="text-base text-obsidian/80 leading-relaxed">
-            I&apos;m open to consulting, fractional CMO work, done-for-you content, or full-time roles. I&apos;m just looking to work with high-integrity people building the future.
-          </p>
-        </div>
       </Section>
 
       {/* 4. From the Builders (Testimonials) */}
