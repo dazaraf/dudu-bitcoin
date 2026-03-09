@@ -7,9 +7,16 @@ import ScrollReveal from "@/components/ScrollReveal";
 import EmailCapture from "@/components/EmailCapture";
 
 export const metadata: Metadata = {
-  title: "Who Holds The Most Bitcoin? | Dudu Bitcoin",
+  title: "Who Holds The Most Bitcoin in 2026? Top BTC Holders List (Live)",
   description:
-    "A live breakdown of the largest Bitcoin holders — from Satoshi to sovereign nations, exchanges, ETFs, and public companies.",
+    "Live tracker of the top Bitcoin holders in 2026. See how much BTC Satoshi, BlackRock, MicroStrategy, Coinbase, Binance, and nation states hold — updated every 5 minutes with real-time USD values.",
+  openGraph: {
+    type: "article",
+    title: "Who Holds The Most Bitcoin? — Live Top Holders List",
+    description:
+      "Live breakdown of the largest Bitcoin holders: Satoshi, BlackRock, Strategy, Coinbase, Binance, USA, China, and more. Updated every 5 minutes.",
+    url: "/content/bitcoin-holders",
+  },
 };
 
 export default async function BitcoinHoldersPage() {
@@ -34,6 +41,7 @@ export default async function BitcoinHoldersPage() {
       <ScrollReveal>
         <Section>
           <div className="max-w-[900px]">
+            <h1 className="sr-only">Who Holds The Most Bitcoin? — Top Bitcoin Holders in 2026</h1>
             <BitcoinHoldersChart btcData={btcData} />
           </div>
         </Section>

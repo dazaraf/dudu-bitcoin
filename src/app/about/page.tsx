@@ -8,14 +8,14 @@ import CalendlyButton from "@/components/CalendlyButton";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "About | Dudu Bitcoin",
+  title: "About David Azaraf (Dudu Bitcoin) — Growth Architect, Crypto GTM Strategist",
   description:
-    "Dudu Bitcoin is a Growth Architect — building AI tools, hosting livestreams, and consulting founders navigating the agentic economy.",
+    "David Azaraf (Dudu Bitcoin) is a growth architect and crypto GTM strategist. Former Head of Marketing at Bancor and INX, now consulting AI-native founders on go-to-market, demand gen, and audience building.",
   openGraph: {
     type: "profile",
-    title: "About | Dudu Bitcoin",
+    title: "About David Azaraf (Dudu Bitcoin)",
     description:
-      "Dudu Bitcoin is a Growth Architect — building AI tools, hosting livestreams, and consulting founders navigating the agentic economy.",
+      "Growth architect and crypto GTM strategist. 50+ expert conversations, 500K+ views, 11K+ subscribers. Consulting founders on AI growth strategy and the agentic economy.",
     url: "/about",
   },
 };

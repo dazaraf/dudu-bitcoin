@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Dudu Bitcoin | Abundance Architect";
+export const alt = "Dudu Bitcoin | Growth Architect";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -49,7 +49,7 @@ export default function OGImage() {
             fontWeight: 600,
           }}
         >
-          Abundance Architect
+          Growth Architect
         </div>
         <div
           style={{
@@ -61,7 +61,7 @@ export default function OGImage() {
             lineHeight: 1.5,
           }}
         >
-          Building distribution in the age of abundance
+          AI growth strategy, Bitcoin research, and the agentic economy
         </div>
       </div>
     ),

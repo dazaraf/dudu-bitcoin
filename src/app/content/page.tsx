@@ -8,14 +8,14 @@ import BitcoinHoldersChart from "@/components/BitcoinHoldersChart";
 import FlippeningChart from "@/components/FlippeningChart";
 
 export const metadata: Metadata = {
-  title: "Content & Research | Dudu Bitcoin",
+  title: "Bitcoin Research, AI Verification Reports & Live Data Tools",
   description:
-    "Original research on AI verification and zero-knowledge cryptography, plus live Bitcoin data tools. From Dudu Bitcoin.",
+    "Free Bitcoin data tools (top BTC holders, flippening tracker) and original ZKML research on AI verification. Live data updated every 5 minutes. From Dudu Bitcoin.",
   openGraph: {
     type: "website",
     title: "Content & Research | Dudu Bitcoin",
     description:
-      "Original research on AI verification and zero-knowledge cryptography, plus live Bitcoin data tools. From Dudu Bitcoin.",
+      "Original AI verification research, live Bitcoin holder rankings, flippening tracker, and insights on the agentic economy.",
     url: "/content",
   },
 };

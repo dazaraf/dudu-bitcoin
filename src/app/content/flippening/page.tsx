@@ -7,9 +7,16 @@ import ScrollReveal from "@/components/ScrollReveal";
 import EmailCapture from "@/components/EmailCapture";
 
 export const metadata: Metadata = {
-  title: "Bitcoin Flippening Watch | Dudu Bitcoin",
+  title: "Bitcoin Flippening Watch — BTC vs Gold Market Cap Tracker (Live)",
   description:
-    "Live tracker: Bitcoin's race to become the #1 asset on earth. See how close BTC is to flipping Gold, Apple, Microsoft, and more.",
+    "Live Bitcoin flippening tracker: see how close BTC is to surpassing Gold, Apple, NVIDIA, Microsoft, and Amazon by market cap. Flip price calculator updated every 5 minutes.",
+  openGraph: {
+    type: "article",
+    title: "Bitcoin Flippening Watch — Live Market Cap Tracker",
+    description:
+      "Track Bitcoin's race to #1 asset on earth. Live comparison vs Gold ($21.7T), NVIDIA, Apple, and more. See the exact BTC price needed to flip each asset.",
+    url: "/content/flippening",
+  },
 };
 
 export default async function FlippeningPage() {
@@ -39,6 +46,7 @@ export default async function FlippeningPage() {
       <ScrollReveal>
         <Section>
           <div className="max-w-[900px]">
+            <h1 className="sr-only">Bitcoin Flippening Watch — Will BTC Surpass Gold?</h1>
             <FlippeningChart btcData={btcData} />
           </div>
         </Section>

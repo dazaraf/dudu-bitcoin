@@ -3,14 +3,14 @@ import ScrollReveal from "@/components/ScrollReveal";
 import GtmReportClient from "./GtmReportClient";
 
 export const metadata: Metadata = {
-  title: "$2.5T Spent on AI. Zero Way to Verify It. | Dudu Bitcoin",
+  title: "AI Verification & Zero-Knowledge Proofs: The $2.5T Trust Gap (Research Report)",
   description:
-    "Original research on the AI verification gap — why zero-knowledge cryptography is the only fix, who's building it, and where the market is headed.",
+    "Deep-dive ZKML research: why enterprises can't verify AI outputs, how zero-knowledge proofs fix it, the competitive landscape (Lagrange, EZKL, Modulus), and the GTM playbook for the AI verification market.",
   openGraph: {
     type: "article",
     title: "$2.5T Spent on AI. Zero Way to Verify It.",
     description:
-      "Original research on the AI verification gap — why zero-knowledge cryptography is the only fix, who's building it, and where the market is headed.",
+      "Original research on AI verification, zero-knowledge machine learning (ZKML), and the race to build the trust layer for enterprise AI.",
     url: "/content/gtm-report",
   },
 };
