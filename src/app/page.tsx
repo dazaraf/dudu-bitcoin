@@ -1,8 +1,8 @@
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 import Card from "@/components/Card";
-import ContentCard from "@/components/ContentCard";
 import EmailCapture from "@/components/EmailCapture";
+
 import ScrollReveal from "@/components/ScrollReveal";
 import Testimonials from "@/components/Testimonials";
 import Button from "@/components/Button";
@@ -62,34 +62,6 @@ const whatIDo = [
   },
 ];
 
-const latestContent = [
-  {
-    title: "The Agentic Economy Is Here: What Founders Need to Know in 2026",
-    date: "Feb 14, 2026",
-    category: "Webinar",
-    excerpt:
-      "A deep dive into how autonomous agents are creating new business models and what it means for your next startup.",
-    locked: true,
-    href: "/content",
-  },
-  {
-    title: "Why AI Abundance Makes Human Taste the Scarcest Asset",
-    date: "Feb 10, 2026",
-    category: "Article",
-    excerpt:
-      "When AI can produce infinite content, the bottleneck shifts to curation, taste, and trust.",
-    href: "/content",
-  },
-  {
-    title: "Live: Building an AI Agent from Scratch — No Code, Full Stack",
-    date: "Feb 7, 2026",
-    category: "Livestream",
-    excerpt:
-      "Watch the full recording of our 2-hour build session where we shipped a working agent live.",
-    locked: true,
-    href: "/content",
-  },
-];
 
 export default function Home() {
   return (
@@ -109,12 +81,12 @@ export default function Home() {
       >
         {/* Meme Row */}
         <ScrollReveal>
-          <div className="mb-10 max-w-[700px] mx-auto">
+          <div className="mb-10 max-w-[480px] mx-auto">
             <Image
               src="/homepage-meme.png"
               alt="What do you do, Dudu?"
-              width={700}
-              height={400}
+              width={480}
+              height={274}
               className="w-full h-auto rounded-2xl"
             />
           </div>
@@ -142,21 +114,81 @@ export default function Home() {
       </ScrollReveal>
 
       {/* 5. Fresh Signal */}
-      <Section title="Fresh Signal" padding="md">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {latestContent.map((item, i) => (
-            <ScrollReveal key={item.title} delay={i * 100}>
-              <ContentCard
-                title={item.title}
-                date={item.date}
-                category={item.category}
-                excerpt={item.excerpt}
-                locked={item.locked}
-                href={item.href}
-              />
-            </ScrollReveal>
-          ))}
+      <Section title="Fresh Signal" subtitle="Original research and live data tools." padding="md">
+        {/* Hero: Alpha Report */}
+        <ScrollReveal>
+          <Link
+            href="/content/gtm-report"
+            className="group block max-w-[900px] overflow-hidden rounded-xl border border-card-border bg-obsidian shadow-sm hover:shadow-lg transition-shadow mb-6"
+          >
+            <div className="p-8 sm:p-10 md:p-12">
+              <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full bg-primary text-white mb-4">
+                Alpha Report
+              </span>
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight mb-3 text-balance">
+                $2.5T Spent on AI.<br />Zero Way to Verify It.
+              </h3>
+              <p className="text-sm sm:text-base text-white/50 max-w-[600px] leading-relaxed mb-6">
+                Original research on the AI verification gap — who&apos;s building the fix, who&apos;s funding it, and where zero-knowledge cryptography changes everything.
+              </p>
+              <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:underline">
+                Unlock the Research
+                <svg
+                  className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </div>
+          </Link>
+        </ScrollReveal>
+
+        {/* Supporting: Live Data Tools */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[900px]">
+          <ScrollReveal>
+            <Link
+              href="/content/bitcoin-holders"
+              className="group flex items-center gap-4 p-4 rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="w-12 h-12 rounded-lg bg-obsidian flex items-center justify-center shrink-0">
+                <span className="text-primary font-bold text-lg">₿</span>
+              </div>
+              <div className="min-w-0">
+                <h3 className="text-sm font-bold text-obsidian group-hover:text-primary transition-colors">
+                  Who Holds The Most Bitcoin?
+                </h3>
+                <p className="text-xs text-fog mt-0.5">Live data — updated every 5 min</p>
+              </div>
+              <svg className="w-4 h-4 text-fog shrink-0 ml-auto transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </ScrollReveal>
+
+          <ScrollReveal delay={100}>
+            <Link
+              href="/content/flippening"
+              className="group flex items-center gap-4 p-4 rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="w-12 h-12 rounded-lg bg-obsidian flex items-center justify-center shrink-0">
+                <span className="text-primary font-bold text-lg">#1</span>
+              </div>
+              <div className="min-w-0">
+                <h3 className="text-sm font-bold text-obsidian group-hover:text-primary transition-colors">
+                  Bitcoin Flippening Watch
+                </h3>
+                <p className="text-xs text-fog mt-0.5">BTC vs Gold, Apple, NVIDIA &amp; more</p>
+              </div>
+              <svg className="w-4 h-4 text-fog shrink-0 ml-auto transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </ScrollReveal>
         </div>
+
         <div className="mt-10 text-center">
           <Link
             href="/content"
@@ -190,7 +222,7 @@ export default function Home() {
             <p className="text-lg text-fog mb-10 text-balance">
               Whether you&apos;re a founder looking for your edge, a team that needs to understand what&apos;s coming, or an event that wants the signal. I&apos;d love to hear what you&apos;re working on.
             </p>
-            <Button variant="primary" size="lg" href="https://calendly.com/dudu-bitcoin/30min">
+            <Button variant="primary" size="lg" href="https://calendly.com/dazaraf/meet-dudu">
               Grab 30 Minutes with Dudu
             </Button>
           </div>

@@ -4,7 +4,6 @@ import "./globals.css";
 import Script from "next/script";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import LeadMagnetPopup from "@/components/LeadMagnetPopup";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -20,9 +19,26 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dudubitcoin.com"),
-  title: "Dudu Bitcoin | Growth Architect for the Agentic Economy",
+  title: {
+    default: "Dudu Bitcoin | Growth Architect for the Agentic Economy",
+    template: "%s | Dudu Bitcoin",
+  },
   description:
-    "Growth architect helping founders and builders win the agentic economy. 50+ expert conversations, 500K+ views, weekly signal for 11K+ subscribers.",
+    "Growth architect helping founders navigate AI, Bitcoin, and the agentic economy. GTM strategy, demand gen, audience building, and original crypto research for 11K+ subscribers.",
+  keywords: [
+    "agentic economy",
+    "Bitcoin growth strategy",
+    "AI marketing consultant",
+    "crypto GTM strategy",
+    "Bitcoin research",
+    "zero knowledge proofs AI",
+    "ZKML",
+    "top bitcoin holders",
+    "bitcoin flippening",
+    "AI verification",
+    "growth architect",
+    "demand generation crypto",
+  ],
   icons: {
     icon: "/icon.svg",
   },
@@ -35,11 +51,13 @@ export const metadata: Metadata = {
     siteName: "Dudu Bitcoin",
     title: "Dudu Bitcoin | Growth Architect for the Agentic Economy",
     description:
-      "Growth architect helping founders and builders win the agentic economy. 50+ expert conversations, 500K+ views, weekly signal for 11K+ subscribers.",
+      "GTM strategy, Bitcoin research, and AI insights for founders building in the agentic economy. Original research, live data tools, and weekly signal.",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Dudu Bitcoin | Growth Architect" }],
   },
   twitter: {
     card: "summary_large_image",
     creator: "@dudu_bitcoin",
+    images: ["/opengraph-image"],
   },
 };
 
@@ -50,10 +68,22 @@ const jsonLd = {
       "@type": "Person",
       name: "David Azaraf",
       alternateName: "Dudu Bitcoin",
-      jobTitle: "Growth Architect for the Agentic Economy",
+      jobTitle: "Growth Architect",
       description:
-        "Growth architect helping founders and builders win the agentic economy. Strategic consultant, livestream host, AI optimist, and Bitcoiner.",
+        "Growth architect helping founders navigate AI, Bitcoin, and the agentic economy. GTM strategist, demand gen specialist, livestream host, and crypto researcher.",
       url: "https://dudubitcoin.com",
+      image: "https://dudubitcoin.com/dudu-avatar.jpeg",
+      knowsAbout: [
+        "Go-to-market strategy",
+        "Demand generation",
+        "Bitcoin",
+        "Agentic economy",
+        "Zero-knowledge proofs",
+        "AI verification",
+        "Audience building",
+        "Crypto marketing",
+        "ZKML",
+      ],
       sameAs: [
         "https://www.linkedin.com/in/davidazaraf/",
         "https://x.com/dudu_bitcoin",
@@ -65,7 +95,8 @@ const jsonLd = {
       name: "Dudu Bitcoin",
       url: "https://dudubitcoin.com",
       description:
-        "Growth architect helping founders and builders win the agentic economy. 50+ expert conversations, 500K+ views, weekly signal for 11K+ subscribers.",
+        "Original Bitcoin research, AI verification analysis, live data tools, and growth strategy for the agentic economy.",
+      publisher: { "@type": "Person", name: "David Azaraf" },
     },
   ],
 };
@@ -97,7 +128,6 @@ gtag('config', 'G-1HY2RZP2Y1');`}
         <Navigation />
         <main id="main-content" className="min-h-screen pt-[72px]">{children}</main>
         <Footer />
-        <LeadMagnetPopup />
       </body>
     </html>
   );

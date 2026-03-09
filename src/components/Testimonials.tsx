@@ -40,7 +40,7 @@ const testimonials: Testimonial[] = [
     role: "Founder & CEO",
     company: "Quantum Economics",
     image: "/testimonials/matigreenspan.jpeg",
-    logo: "/testimonials/quantum_economics_cover.jpeg",
+    logo: "/testimonials/quantum_economics_cover.png",
   },
 ];
 
@@ -107,13 +107,15 @@ function Card({
           <h3 className="text-lg font-bold text-obsidian">{t.name}</h3>
 
           {t.logo ? (
-            <Image
-              src={t.logo}
-              alt={t.company}
-              width={200}
-              height={56}
-              className="h-12 w-auto object-contain mx-auto mt-2 mb-4"
-            />
+            <div className="h-10 w-36 mx-auto mt-2 mb-4 flex items-center justify-center">
+              <Image
+                src={t.logo}
+                alt={t.company}
+                width={144}
+                height={40}
+                className="max-h-10 w-auto object-contain"
+              />
+            </div>
           ) : (
             <p className="text-sm font-semibold text-primary/70 uppercase tracking-wide mt-1 mb-4">
               {t.company}

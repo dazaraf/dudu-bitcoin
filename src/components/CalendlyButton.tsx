@@ -16,7 +16,7 @@ export default function CalendlyButton({
     const top = Math.round(window.screenY + (window.outerHeight - height) / 2);
 
     window.open(
-      "https://calendly.com/dudu-bitcoin/30min",
+      "https://calendly.com/dazaraf/meet-dudu",
       "calendly-popup",
       `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes`
     );

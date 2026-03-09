@@ -1,90 +1,28 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Section from "@/components/Section";
 import EmailCapture from "@/components/EmailCapture";
-import ContentPageClient from "./ContentPageClient";
 import ScrollReveal from "@/components/ScrollReveal";
+import { fetchBtcMarketData } from "@/lib/bitcoin-data";
+import BitcoinHoldersChart from "@/components/BitcoinHoldersChart";
+import FlippeningChart from "@/components/FlippeningChart";
 
 export const metadata: Metadata = {
-  title: "Content & Webinars | Dudu Bitcoin",
+  title: "Bitcoin Research, AI Verification Reports & Live Data Tools",
   description:
-    "Insights on the agentic economy, AI, macro, and Bitcoin. Webinars, articles, and livestreams from Dudu Bitcoin.",
+    "Free Bitcoin data tools (top BTC holders, flippening tracker) and original ZKML research on AI verification. Live data updated every 5 minutes. From Dudu Bitcoin.",
   openGraph: {
     type: "website",
-    title: "Content & Webinars | Dudu Bitcoin",
+    title: "Content & Research | Dudu Bitcoin",
     description:
-      "Insights on the agentic economy, AI, macro, and Bitcoin. Webinars, articles, and livestreams from Dudu Bitcoin.",
+      "Original AI verification research, live Bitcoin holder rankings, flippening tracker, and insights on the agentic economy.",
     url: "/content",
   },
 };
 
-const featuredContent = {
-  title:
-    "The Agentic Economy Thesis: Why AI Agents Will Become Economic Participants",
-  date: "Feb 12, 2026",
-  category: "Webinar",
-  excerpt:
-    "The defining thesis of the next decade: AI agents won't just assist humans — they'll become autonomous economic actors. In this deep-dive webinar, I break down the infrastructure, incentives, and implications for founders building in this new paradigm.",
-  locked: false,
-};
+export default async function ContentPage() {
+  const btcData = await fetchBtcMarketData();
 
-const allContent = [
-  {
-    title: "How AI Agents Will Replace 80% of SaaS",
-    date: "Feb 17, 2026",
-    category: "Article",
-    excerpt:
-      "The SaaS model is built on humans clicking buttons. When agents can do the clicking, the entire category gets repriced.",
-
-    locked: false,
-  },
-  {
-    title: "Bitcoin as Settlement Layer for Autonomous Agents",
-    date: "Feb 14, 2026",
-    category: "Webinar",
-    excerpt:
-      "Why Bitcoin's programmable settlement layer is the natural home for agent-to-agent transactions at scale.",
-
-    locked: true,
-  },
-  {
-    title: "Building Distribution as a Solo Creator",
-    date: "Feb 10, 2026",
-    category: "Livestream",
-    excerpt:
-      "A candid 90-minute session on how I built an audience and 500K views without a team, budget, or ad spend.",
-
-    locked: false,
-  },
-  {
-    title: "Signal vs Noise: Separating AI Hype from Reality",
-    date: "Feb 7, 2026",
-    category: "Article",
-    excerpt:
-      "A framework for evaluating AI claims, filtering genuine breakthroughs from marketing theater.",
-
-    locked: true,
-  },
-  {
-    title: "The 80/20 Rule for AI-Native Founders",
-    date: "Feb 3, 2026",
-    category: "Webinar",
-    excerpt:
-      "How to structure your startup so AI handles 80% of execution while you focus on the 20% that creates real moats.",
-
-    locked: true,
-  },
-  {
-    title: "Macro Trends Shaping the Agentic Economy in 2026",
-    date: "Jan 28, 2026",
-    category: "Livestream",
-    excerpt:
-      "Geopolitics, interest rates, regulation, and compute — the macro forces that will determine which AI ventures survive.",
-
-    locked: false,
-  },
-];
-
-export default function ContentPage() {
   return (
     <>
       {/* 1. Hero */}
@@ -103,73 +41,123 @@ export default function ContentPage() {
 
         <div className="relative z-10 max-w-[900px] mx-auto px-4 sm:px-6 text-center">
           <h1 className="text-4xl sm:text-5xl md:text-[64px] font-bold leading-[1.1] tracking-tight text-obsidian mb-6 text-balance">
-            Content &amp; Webinars
+            Content &amp; Research
           </h1>
           <p className="text-lg md:text-xl text-fog max-w-[640px] mx-auto leading-relaxed text-balance">
-            Insights on the agentic economy, AI, macro, and Bitcoin.
+            Original research, live data tools, and insights on Bitcoin and
+            the agentic economy.
           </p>
         </div>
       </section>
 
-      {/* 2. Featured Content */}
+      {/* 2. Intelligence Briefing — report gets top billing */}
       <ScrollReveal>
-        <Section title="Featured">
-          <div
-            className="max-w-[900px] overflow-hidden rounded-xl border border-card-border bg-white shadow-sm"
+        <Section
+          title="Intelligence Briefing"
+          subtitle="Original research you won't find anywhere else."
+        >
+          <Link
+            href="/content/gtm-report"
+            className="group block max-w-[900px] overflow-hidden rounded-xl border border-card-border bg-obsidian shadow-sm hover:shadow-lg transition-shadow"
           >
-            {/* Thumbnail area */}
-            <div className="relative aspect-[21/9] overflow-hidden bg-surface">
-              <div className="w-full h-full flex items-center justify-center text-card-border">
-                <svg
-                  className="w-20 h-20"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1}
-                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1}
-                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-              <span className="absolute bottom-4 left-4 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-full bg-primary text-white">
-                {featuredContent.category}
+            <div className="p-8 sm:p-10 md:p-12">
+              <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full bg-primary text-white mb-5">
+                Alpha Report
               </span>
-              <span className="absolute bottom-4 right-4 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-full bg-green-50 text-green-700 border border-green-200">
-                Free
-              </span>
-            </div>
-            <div className="p-6 md:p-8">
-              <time className="text-xs text-fog mb-2 block">
-                {featuredContent.date}
-              </time>
-              <h3 className="text-xl md:text-2xl font-bold text-obsidian mb-3 text-balance">
-                {featuredContent.title}
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight mb-4 text-balance">
+                $2.5T Spent on AI.<br />Zero Way to Verify It.
               </h3>
-              <p className="text-sm text-fog leading-relaxed max-w-[720px]">
-                {featuredContent.excerpt}
+              <p className="text-sm sm:text-base text-white/50 max-w-[600px] leading-relaxed mb-6">
+                Enterprises are pouring trillions into AI systems they fundamentally cannot verify. Zero-knowledge cryptography changes that equation entirely. This report maps the competitive landscape, breaks down the GTM strategies, and identifies where the real leverage sits.
               </p>
+
+              <ul className="text-sm text-white/40 space-y-2 mb-8 max-w-[500px]">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">&#x25B8;</span>
+                  Why ZK proofs are the only viable path to AI trust
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">&#x25B8;</span>
+                  Competitive landscape: who&apos;s building verification infrastructure
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">&#x25B8;</span>
+                  A GTM playbook for the $2.5T trust gap
+                </li>
+              </ul>
+
+              <div className="flex items-center gap-4">
+                <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white font-semibold text-sm group-hover:brightness-110 transition-all">
+                  Unlock the Research
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+                <span className="text-[10px] text-white/25 uppercase tracking-wider">
+                  Free with email
+                </span>
+              </div>
             </div>
+          </Link>
+        </Section>
+      </ScrollReveal>
+
+      {/* 3. Live Data Tools */}
+      <ScrollReveal>
+        <Section title="Live Data Tools" subtitle="Free charts — updated every 5 minutes." variant="light">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[900px]">
+            {/* Bitcoin Holders */}
+            <Link
+              href="/content/bitcoin-holders"
+              className="group block overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow"
+            >
+              <BitcoinHoldersChart btcData={btcData} compact />
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-obsidian mb-1">
+                  Who Holds The Most Bitcoin?
+                </h3>
+                <p className="text-sm text-fog leading-relaxed mb-2">
+                  A breakdown of the largest Bitcoin holders — from Satoshi to
+                  sovereign nations.
+                </p>
+                <span className="inline-flex items-center gap-1 text-xs text-primary font-medium group-hover:underline">
+                  View full breakdown
+                  <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </Link>
+
+            {/* Flippening Watch */}
+            <Link
+              href="/content/flippening"
+              className="group block overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow"
+            >
+              <FlippeningChart btcData={btcData} compact />
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-obsidian mb-1">
+                  Bitcoin Flippening Watch
+                </h3>
+                <p className="text-sm text-fog leading-relaxed mb-2">
+                  Tracking Bitcoin&apos;s race to become the #1 asset on earth by
+                  market cap.
+                </p>
+                <span className="inline-flex items-center gap-1 text-xs text-primary font-medium group-hover:underline">
+                  View live tracker
+                  <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </Link>
           </div>
         </Section>
       </ScrollReveal>
 
-      {/* 3 & 4. Filter Tabs + Content Grid (client component) */}
+      {/* 4. Newsletter CTA */}
       <ScrollReveal>
-        <ContentPageClient content={allContent} />
-      </ScrollReveal>
-
-      {/* 5. Newsletter CTA */}
-      <ScrollReveal>
-        <Section variant="light">
+        <Section>
           <EmailCapture
             headline="Never miss an insight"
             subtext="Get my best thinking on AI, macro, and the agentic economy — straight to your inbox."
@@ -179,7 +167,6 @@ export default function ContentPage() {
           </p>
         </Section>
       </ScrollReveal>
-
     </>
   );
 }
