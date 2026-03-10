@@ -48,3 +48,5 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 .a5c/
+GEO-guide.md
+keyword-research/

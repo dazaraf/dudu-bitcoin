@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEO Cheat Sheet — Dudu Bitcoin</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #E5E5E5;
+    min-height: 100vh;
+  }
+
+  /* Controls */
+  .controls {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #0D0D0D;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    border-bottom: 2px solid #F7931A;
+  }
+
+  .controls span {
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .controls button {
+    background: #F7931A;
+    color: #fff;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 120ms ease;
+  }
+
+  .controls button:hover { transform: translateY(-1px); }
+  .controls button:active { transform: scale(0.97); }
+  .controls button svg { width: 16px; height: 16px; }
+
+  /* Slides */
+  .slides {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 32px 24px 64px;
+  }
+
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    background: #FEFCF9;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    border-top: 5px solid #F7931A;
+  }
+
+  /* Brand watermark */
+  .brand {
+    position: absolute;
+    bottom: 40px;
+    left: 52px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .brand-dot {
+    width: 10px;
+    height: 10px;
+    background: #F7931A;
+    border-radius: 50%;
+  }
+
+  .brand span {
+    font-size: 15px;
+    font-weight: 800;
+    color: #B0B0B0;
+    letter-spacing: 1px;
+  }
+
+  /* Slide number */
+  .snum {
+    position: absolute;
+    top: 44px;
+    right: 52px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ccc;
+  }
+
+  /* ====== SLIDE 1: TITLE ====== */
+  .s1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 64px 64px;
+  }
+
+  .s1-badge {
+    display: inline-block;
+    background: #F7931A;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-bottom: 36px;
+    width: fit-content;
+  }
+
+  .s1 h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #0D0D0D;
+    line-height: 1.0;
+    letter-spacing: -3px;
+    margin-bottom: 24px;
+  }
+
+  .s1 h1 span { color: #F7931A; }
+
+  .s1-sub {
+    font-size: 22px;
+    color: #888;
+    line-height: 1.55;
+    max-width: 800px;
+    margin-bottom: 56px;
+  }
+
+  .s1-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: #0D0D0D;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .s1-stat {
+    padding: 32px 20px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .s1-stat:last-child { border-right: none; }
+
+  .s1-stat-num {
+    font-size: 42px;
+    font-weight: 800;
+    color: #F7931A;
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+  }
+
+  .s1-stat-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .s1-swipe {
+    position: absolute;
+    bottom: 40px;
+    right: 52px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #B0B0B0;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .s1-swipe svg {
+    width: 20px;
+    height: 20px;
+    animation: nudge 1.5s ease-in-out infinite;
+  }
+
+  @keyframes nudge {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(6px); }
+  }
+
+  /* ====== TACTIC SLIDES (2-9) ====== */
+  .tactic-slide {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 56px 64px 100px;
+  }
+
+  .t-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #F7931A;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 800;
+    padding: 10px 20px;
+    border-radius: 8px;
+    width: fit-content;
+    margin-bottom: 28px;
+    letter-spacing: 0.3px;
+  }
+
+  .t-pill-emoji {
+    font-size: 16px;
+  }
+
+  .t-headline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    color: #0D0D0D;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    margin-bottom: 28px;
+    max-width: 880px;
+  }
+
+  .t-bullets {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 36px;
+  }
+
+  .t-bullets li {
+    font-size: 20px;
+    color: #555;
+    line-height: 1.5;
+    padding: 6px 0;
+    padding-left: 28px;
+    position: relative;
+  }
+
+  .t-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #F7931A;
+    font-weight: 700;
+  }
+
+  .t-boxes {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .t-box {
+    padding: 22px 28px;
+    border-radius: 12px;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  .t-box.pro {
+    background: rgba(247, 147, 26, 0.06);
+    border-left: 4px solid #F7931A;
+    color: #4a3500;
+  }
+
+  .t-box.mistake {
+    background: rgba(220, 53, 53, 0.04);
+    border-left: 4px solid #ef4444;
+    color: #6b2020;
+  }
+
+  .t-box strong { font-weight: 800; }
+  .t-box.pro strong { color: #d47800; }
+  .t-box.mistake strong { color: #b91c1c; }
+
+  /* ====== SLIDE 10: MISTAKES + CTA ====== */
+  .s10 {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 56px 64px 100px;
+  }
+
+  .s10 h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #0D0D0D;
+    letter-spacing: -1.5px;
+    margin-bottom: 36px;
+    line-height: 1.1;
+  }
+
+  .s10 h2 span { color: #ef4444; }
+
+  .m-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: auto;
+  }
+
+  .m-card {
+    background: #fff;
+    border: 1px solid #E5E5E5;
+    border-radius: 12px;
+    padding: 24px 28px;
+    border-left: 4px solid #ef4444;
+  }
+
+  .m-card h4 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #b91c1c;
+    margin-bottom: 8px;
+  }
+
+  .m-card p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+  }
+
+  .s10-cta {
+    margin-top: 36px;
+    background: #0D0D0D;
+    border-radius: 16px;
+    padding: 40px 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .s10-cta h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+
+  .s10-cta p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .s10-cta-btn {
+    background: #F7931A;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 800;
+    padding: 16px 32px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<div class="controls">
+  <span>10 slides · 1080×1080</span>
+  <button onclick="downloadPDF()">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V3"/>
+    </svg>
+    Download PDF Carousel
+  </button>
+</div>
+
+<div class="slides" id="slides">
+
+  <!-- SLIDE 1: TITLE -->
+  <div class="slide">
+    <div class="snum">1 / 10</div>
+    <div class="s1">
+      <div class="s1-badge">GEO Cheat Sheet · 2026</div>
+      <h1>How to Get <span>Cited<br>by AI</span> Search<br>Engines</h1>
+      <p class="s1-sub">8 tactics for Generative Engine Optimization — from the Princeton study, 680M citations analyzed, and real case studies.</p>
+      <div class="s1-stats">
+        <div class="s1-stat">
+          <div class="s1-stat-num">+41%</div>
+          <div class="s1-stat-label">Visibility from<br>adding statistics</div>
+        </div>
+        <div class="s1-stat">
+          <div class="s1-stat-num">3.2x</div>
+          <div class="s1-stat-label">More citations<br>with FAQ schema</div>
+        </div>
+        <div class="s1-stat">
+          <div class="s1-stat-num">527%</div>
+          <div class="s1-stat-label">AI traffic<br>growth YoY</div>
+        </div>
+        <div class="s1-stat">
+          <div class="s1-stat-num">4.4x</div>
+          <div class="s1-stat-label">Higher conversion<br>from AI search</div>
+        </div>
+      </div>
+    </div>
+    <div class="brand"><div class="brand-dot"></div><span>DUDU BITCOIN</span></div>
+    <div class="s1-swipe">
+      Swipe
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: Lead with Data -->
+  <div class="slide">
+    <div class="snum">2 / 10</div>
+    <div class="tactic-slide">
+      <span class="t-pill"><span class="t-pill-emoji">📊</span> Lead with Data</span>
+      <h2 class="t-headline">Adding statistics is the #1 tactic.<br>+41% visibility boost.</h2>
+      <ul class="t-bullets">
+        <li>Specific numbers beat vague claims every time</li>
+        <li>Attribute every stat to a credible source</li>
+        <li>Publish original research — competitors can't duplicate it</li>
+        <li>Use tables for data — AI extracts structured data more easily</li>
+      </ul>
+      <div class="t-boxes">
+        <div class="t-box pro"><strong>Pro tip:</strong> "47% growth in Q1 2026" gets cited. "Significant growth" gets filtered out. Every claim needs a number attached.</div>
+        <div class="t-box mistake"><strong>Common mistake:</strong> Hedging language and ranges. AI pulls high-confidence assertions — be specific or be invisible.</div>
+      </div>
+    </div>
+    <div class="brand"><div class="brand-dot"></div><span>DUDU BITCOIN</span></div>
+  </div>
+
+  <!-- SLIDE 3: BLUF Structure -->
+  <div class="slide">
+    <div class="snum">3 / 10</div>
+    <div class="tactic-slide">
+      <span class="t-pill"><span class="t-pill-emoji">🏗️</span> BLUF Structure</span>
+      <h2 class="t-headline">Answer the question in the first 200 words. Don't build up to it.</h2>
+      <ul class="t-bullets">
+        <li>AI evaluates opening content most heavily</li>
+        <li>Write 40-60 word self-contained answer blocks</li>
+        <li>Each section must stand alone as a passage</li>
+        <li>Direct answer first, then supporting context</li>
+      </ul>
+      <div class="t-boxes">
+        <div class="t-box pro"><strong>Pro tip:</strong> Write every section like a featured snippet. Both Google and AI engines reward the same format: answer first, context second.</div>
+        <div class="t-box mistake"><strong>Common mistake:</strong> Long intros, "In this article we'll explore..." — throat-clearing paragraphs. The AI already stopped reading.</div>
+      </div>
+    </div>
+    <div class="brand"><div class="brand-dot"></div><span>DUDU BITCOIN</span></div>
+  </div>
+
+  <!-- SLIDE 4: FAQ Schema -->
+  <div class="slide">
+    <div class="snum">4 / 10</div>
+    <div class="tactic-slide">
+      <span class="t-pill"><span class="t-pill-emoji">❓</span> FAQ Schema</span>
+      <h2 class="t-headline">Pages with FAQ markup get cited 3.2x more by AI engines.</h2>
+      <ul class="t-bullets">
+        <li>Use real questions your audience actually asks</li>
+        <li>Implement FAQPage schema in JSON-LD format</li>
+        <li>Match how people naturally query AI assistants</li>
+        <li>41% citation rate vs 15% without — 2.7x higher</li>
+      </ul>
+      <div class="t-boxes">
+        <div class="t-box pro"><strong>Pro tip:</strong> Ask ChatGPT "what do people ask about [your topic]?" Then answer every one on your page with schema markup.</div>
+        <div class="t-box mistake"><strong>Common mistake:</strong> Writing FAQs nobody searches for. Use Search Console, Reddit and forums for real questions — not the ones you wish people asked.</div>
+      </div>
+    </div>
+    <div class="brand"><div class="brand-dot"></div><span>DUDU BITCOIN</span></div>
+  </div>
+
+  <!-- SLIDE 5: Know Each AI -->
+  <div class="slide">
+    <div class="snum">5 / 10</div>
+    <div class="tactic-slide">
+      <span class="t-pill"><span class="t-pill-emoji">🎯</span> Know Each AI</span>
+      <h2 class="t-headline">Every AI engine has different source preferences. One size won't fit.</h2>
+      <ul class="t-bullets">
+        <li>ChatGPT: Wikipedia dominates (47.9% of top-10 citations)</li>
+        <li>Perplexity: Reddit is king (46.7% of top-10 citations)</li>
+        <li>Google AI Overviews: most balanced — Reddit, YouTube, LinkedIn</li>
+        <li>Claude: highest weight on research sources and accreditations</li>
+      </ul>
+      <div class="t-boxes">
+        <div class="t-box pro"><strong>Pro tip:</strong> For ChatGPT: get a Wikipedia mention. Perplexity: be active on Reddit. Google: diversify across YouTube, LinkedIn, and your site.</div>
+        <div class="t-box mistake"><strong>Common mistake:</strong> Treating "AI search" as one monolith. ChatGPT and Perplexity have completely different source preferences. Know your audience's platform.</div>
+      </div>
+    </div>
+    <div class="brand"><div class="brand-dot"></div><span>DUDU BITCOIN</span></div>
+  </div>
+
+  <!-- SLIDE 6: Topic Clusters -->
+  <div class="slide">
+    <div class="snum">6 / 10</div>
+    <div class="tactic-slide">
+      <span class="t-pill"><span class="t-pill-emoji">🕸️</span> Topic Clusters</span>
+      <h2 class="t-headline">Sites with 5+ interlinked pages get 3.2x more AI citations.</h2>
+      <ul class="t-bullets">
+        <li>Build pillar pages + 8-15 deep-dive cluster articles</li>
+        <li>Interlink everything with descriptive anchor text</li>
+        <li>86% of AI citations come from topic-clustered sites</li>
+        <li>General queries → pillar cited. Specific → cluster cited</li>
+      </ul>
+      <div class="t-boxes">
+        <div class="t-box pro"><strong>Pro tip:</strong> Pick 3-5 pillar topics you want to own. Build depth, not breadth. AI recognizes expertise when you cover every angle.</div>
+        <div class="t-box mistake"><strong>Common mistake:</strong> 50 thin posts on 50 topics. AI sees you as expert in nothing. Be the definitive source on 3 topics rather than mediocre on 50.</div>
+      </div>
+    </div>
+    <div class="brand"><div class="brand-dot"></div><span>DUDU BITCOIN</span></div>
+  </div>
+
+  <!-- SLIDE 7: Entity Authority -->
+  <div class="slide">
+    <div class="snum">7 / 10</div>
+    <div class="tactic-slide">
+      <span class="t-pill"><span class="t-pill-emoji">🔑</span> Entity Authority</span>
+      <h2 class="t-headline">Not in the Knowledge Graph? Content optimization alone won't save you.</h2>
+      <ul class="t-bullets">
+        <li>Consistent brand info across every platform</li>
+        <li>Schema.org Organization + Person markup is the minimum</li>
+        <li>Third-party mentions outweigh owned content for AI trust</li>
+        <li>Google's Knowledge Graph: 800B facts about 8B entities</li>
+      </ul>
+      <div class="t-boxes">
+        <div class="t-box pro"><strong>Pro tip:</strong> Get your brand into the Knowledge Graph as a distinct, verifiable entity. Focus on attributes (what you ARE) not just what you do.</div>
+        <div class="t-box mistake"><strong>Common mistake:</strong> Different names, bios, descriptions across platforms. AI cross-references everything — inconsistency = low confidence = no citation.</div>
+      </div>
+    </div>
+    <div class="brand"><div class="brand-dot"></div><span>DUDU BITCOIN</span></div>
+  </div>
+
+  <!-- SLIDE 8: Cite Sources -->
+  <div class="slide">
+    <div class="snum">8 / 10</div>
+    <div class="tactic-slide">
+      <span class="t-pill"><span class="t-pill-emoji">📎</span> Cite Sources</span>
+      <h2 class="t-headline">Citing sources in your own content boosts your visibility 30-40%.</h2>
+      <ul class="t-bullets">
+        <li>AI treats well-cited content as more trustworthy</li>
+        <li>Include expert quotes with clear attribution</li>
+        <li>Link to authoritative external sources</li>
+        <li>"According to [Source], [claim]" pattern works best</li>
+      </ul>
+      <div class="t-boxes">
+        <div class="t-box pro"><strong>Pro tip:</strong> AI recognizes attribution patterns. Content that backs up its claims with named sources gets rewarded — you cite others, AI cites you.</div>
+        <div class="t-box mistake"><strong>Common mistake:</strong> Opinion pieces with zero external validation. If you're the only one saying it, AI treats it as low-confidence and skips you.</div>
+      </div>
+    </div>
+    <div class="brand"><div class="brand-dot"></div><span>DUDU BITCOIN</span></div>
+  </div>
+
+  <!-- SLIDE 9: llms.txt -->
+  <div class="slide">
+    <div class="snum">9 / 10</div>
+    <div class="tactic-slide">
+      <span class="t-pill"><span class="t-pill-emoji">🤖</span> llms.txt File</span>
+      <h2 class="t-headline">Create /llms.txt — the robots.txt for AI crawlers.</h2>
+      <ul class="t-bullets">
+        <li>A markdown map of your key pages, written for LLMs</li>
+        <li>Allow GPTBot, ClaudeBot, PerplexityBot in robots.txt</li>
+        <li>Create /llms.txt (overview) + /llms-full.txt (full content)</li>
+        <li>Early adopters get indexed before competitors know it exists</li>
+      </ul>
+      <div class="t-boxes">
+        <div class="t-box pro"><strong>Pro tip:</strong> Think of llms.txt as your elevator pitch to every AI on the internet. Curate it — only include your strongest, most authoritative pages.</div>
+        <div class="t-box mistake"><strong>Common mistake:</strong> Blocking AI crawlers to "protect content." You become invisible to every AI search engine. That's the real cost.</div>
+      </div>
+    </div>
+    <div class="brand"><div class="brand-dot"></div><span>DUDU BITCOIN</span></div>
+  </div>
+
+  <!-- SLIDE 10: Mistakes + CTA -->
+  <div class="slide">
+    <div class="snum">10 / 10</div>
+    <div class="s10">
+      <h2>Top Mistakes That <span>Kill</span><br>Your AI Visibility</h2>
+      <div class="m-grid">
+        <div class="m-card">
+          <h4>Keyword stuffing</h4>
+          <p>Underperforms baseline by 10% on Perplexity. LLMs detect and penalize forced phrasing.</p>
+        </div>
+        <div class="m-card">
+          <h4>No schema markup</h4>
+          <p>Leaving a 2.7-3.2x citation boost on the table. FAQ + Article schema is the bare minimum.</p>
+        </div>
+        <div class="m-card">
+          <h4>Ignoring off-site signals</h4>
+          <p>AI cross-references sources. Zero third-party mentions = zero credibility to the model.</p>
+        </div>
+        <div class="m-card">
+          <h4>Stale content</h4>
+          <p>Visibility drops after 3-6 months. AI citations are 25.7% fresher than Google organic results.</p>
+        </div>
+        <div class="m-card">
+          <h4>No measurement</h4>
+          <p>Test 20-50 prompts monthly across ChatGPT, Perplexity, Google AI. Track what cites you.</p>
+        </div>
+        <div class="m-card">
+          <h4>Treating GEO as just SEO</h4>
+          <p>Entity optimization, citation-building, structured passages — it's a different playbook entirely.</p>
+        </div>
+      </div>
+      <div class="s10-cta">
+        <div>
+          <h3>Want the full research guide?</h3>
+          <p>40+ sources, checklists, platform strategies</p>
+        </div>
+        <div class="s10-cta-btn">dudubitcoin.com/content</div>
+      </div>
+    </div>
+    <div class="brand"><div class="brand-dot"></div><span>DUDU BITCOIN</span></div>
+  </div>
+
+</div>
+
+<script>
+async function downloadPDF() {
+  const btn = document.querySelector('.controls button');
+  const origHTML = btn.innerHTML;
+  btn.style.pointerEvents = 'none';
+
+  try {
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({
+      orientation: 'landscape',
+      unit: 'px',
+      format: [1080, 1080],
+    });
+
+    const slides = document.querySelectorAll('.slide');
+
+    for (let i = 0; i < slides.length; i++) {
+      btn.textContent = `Rendering slide ${i + 1} / ${slides.length}...`;
+
+      const canvas = await html2canvas(slides[i], {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#FEFCF9',
+        logging: false,
+        width: 1080,
+        height: 1080,
+      });
+
+      const imgData = canvas.toDataURL('image/jpeg', 0.95);
+      if (i > 0) pdf.addPage([1080, 1080]);
+      pdf.addImage(imgData, 'JPEG', 0, 0, 1080, 1080);
+    }
+
+    pdf.save('GEO-cheat-sheet-dudu-bitcoin.pdf');
+  } catch (err) {
+    alert('Export failed: ' + err.message);
+    console.error(err);
+  }
+
+  btn.innerHTML = origHTML;
+  btn.style.pointerEvents = 'auto';
+}
+</script>
+</body>
+</html>
