@@ -37,7 +37,7 @@ const timelineEntries = [
     period: "2018–2024",
     title: "Crypto Native",
     description:
-      "Discovered Bitcoin. Head of Marketing for Bancor, Tectona, and INX.",
+      "Discovered Bitcoin. Led content, growth and GTM for a number of startups in the Israeli Web3 ecosystem. Founded the Yalla Bitcoin community.",
   },
   {
     period: "2024–2025",
