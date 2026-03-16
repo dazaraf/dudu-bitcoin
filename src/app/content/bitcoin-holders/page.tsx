@@ -5,6 +5,7 @@ import BitcoinHoldersChart from "@/components/BitcoinHoldersChart";
 import Section from "@/components/Section";
 import ScrollReveal from "@/components/ScrollReveal";
 import EmailCapture from "@/components/EmailCapture";
+import ShareButtons from "@/components/ShareButtons";
 
 export const metadata: Metadata = {
   title: "Who Holds The Most Bitcoin in 2026? Top BTC Holders List (Live)",
@@ -102,6 +103,23 @@ export default async function BitcoinHoldersPage() {
               )}
             </div>
 
+            <h3 className="text-lg font-bold text-obsidian mt-6 mb-3">
+              Why This Matters
+            </h3>
+            <p className="text-fog leading-relaxed mb-4">
+              Understanding who holds Bitcoin is essential for anticipating market moves.
+              When BlackRock&apos;s ETF accumulates more BTC in a single quarter than most
+              nations hold in total, the power dynamics of this asset class shift permanently.
+              The era of retail-driven Bitcoin cycles is giving way to institutional accumulation
+              on a scale most people haven&apos;t internalized yet.
+            </p>
+            <p className="text-fog leading-relaxed mb-4">
+              This tracker lets you see exactly where the concentration sits — and more
+              importantly, how fast it&apos;s changing. Watch for the gap between ETF
+              holdings and exchange reserves. When ETFs hold more Bitcoin than all
+              exchanges combined, the supply squeeze thesis moves from theory to fact.
+            </p>
+
             <p className="text-fog leading-relaxed mt-6">
               Numbers are approximations based on on-chain analysis, public filings,
               and exchange disclosures. Actual holdings may differ.
@@ -109,6 +127,13 @@ export default async function BitcoinHoldersPage() {
             <p className="text-xs text-fog mt-2">
               Data refreshes every 5 minutes. BTC price via CoinGecko.
             </p>
+
+            <div className="mt-6 pt-6 border-t border-card-border not-prose">
+              <ShareButtons
+                title="Who Holds The Most Bitcoin in 2026? Live Top Holders List"
+                tweetText="Who holds the most Bitcoin? Live tracker showing Satoshi, BlackRock, MicroStrategy, and more — updated every 5 minutes."
+              />
+            </div>
           </div>
         </Section>
       </ScrollReveal>

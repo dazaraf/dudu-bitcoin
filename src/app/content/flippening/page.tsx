@@ -5,6 +5,7 @@ import FlippeningChart from "@/components/FlippeningChart";
 import Section from "@/components/Section";
 import ScrollReveal from "@/components/ScrollReveal";
 import EmailCapture from "@/components/EmailCapture";
+import ShareButtons from "@/components/ShareButtons";
 
 export const metadata: Metadata = {
   title: "Bitcoin Flippening Watch — BTC vs Gold Market Cap Tracker (Live)",
@@ -110,10 +111,34 @@ export default async function FlippeningPage() {
               flip price shifts marginally over time.
             </p>
 
+            <h3 className="text-lg font-bold text-obsidian mt-6 mb-3">
+              Why Track The Flippening?
+            </h3>
+            <p className="text-fog leading-relaxed mb-4">
+              Every asset Bitcoin surpasses is a psychological and structural milestone.
+              When BTC flipped Silver, the narrative shifted from &quot;digital experiment&quot;
+              to &quot;legitimate store of value.&quot; When it flips a company like Amazon
+              or Google, it proves that a decentralized network with no CEO, no headquarters,
+              and no marketing budget can outvalue the most powerful corporations on earth.
+            </p>
+            <p className="text-fog leading-relaxed mb-4">
+              The ultimate target is Gold at ~$21.7 trillion. That flip would make Bitcoin
+              the single most valuable asset class in human history — a 10x from current
+              levels. This tracker shows you exactly how far along that journey we are,
+              updated in real time.
+            </p>
+
             <p className="text-xs text-fog mt-4">
               BTC data refreshes every 5 minutes via CoinGecko. Traditional asset
               market caps are approximate and updated periodically.
             </p>
+
+            <div className="mt-6 pt-6 border-t border-card-border not-prose">
+              <ShareButtons
+                title="Bitcoin Flippening Watch — BTC vs Gold Market Cap Tracker (Live)"
+                tweetText="How close is Bitcoin to flipping Gold? Live flippening tracker with real-time market cap comparisons."
+              />
+            </div>
           </div>
         </Section>
       </ScrollReveal>

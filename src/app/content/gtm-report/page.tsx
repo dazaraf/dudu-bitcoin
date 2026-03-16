@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
 import GtmReportClient from "./GtmReportClient";
+import ShareButtons from "@/components/ShareButtons";
 
 export const metadata: Metadata = {
   title: "AI Verification & Zero-Knowledge Proofs: The $2.5T Trust Gap (Research Report)",
@@ -39,9 +40,15 @@ export default function GtmReportPage() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black leading-[1.1] tracking-tight text-obsidian mb-4 text-balance">
             $2.5T Spent on AI.<br />Zero Way to Verify It.
           </h1>
-          <p className="text-lg md:text-xl text-fog max-w-[640px] mx-auto leading-relaxed text-balance">
+          <p className="text-lg md:text-xl text-fog max-w-[640px] mx-auto leading-relaxed text-balance mb-6">
             Original research on the AI verification gap — who&apos;s building the fix, who&apos;s funding it, and where zero-knowledge cryptography changes everything.
           </p>
+          <div className="flex justify-center">
+            <ShareButtons
+              title="$2.5T Spent on AI. Zero Way to Verify It. — Research Report"
+              tweetText="$2.5T spent on AI, zero way to verify it. This research report maps the entire AI verification landscape — ZKML, competitive analysis, and the GTM playbook."
+            />
+          </div>
         </div>
       </section>
 
