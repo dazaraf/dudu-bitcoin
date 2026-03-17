@@ -53,12 +53,13 @@ export default function FlowerMonitor({
         {/* Watermark */}
         <text
           x={250}
-          y={480}
+          y={260}
           textAnchor="middle"
-          fill="rgba(255,255,255,0.06)"
+          fill="rgba(255,255,255,0.07)"
           fontWeight="900"
-          fontSize="18"
-          letterSpacing="4"
+          fontSize="42"
+          letterSpacing="6"
+          transform="rotate(-20, 250, 250)"
           style={{ pointerEvents: "none", textTransform: "uppercase" }}
         >
           dudubitcoin.com

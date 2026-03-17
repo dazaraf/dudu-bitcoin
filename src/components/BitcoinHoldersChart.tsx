@@ -21,7 +21,7 @@ export default function BitcoinHoldersChart({ btcData, compact }: Props) {
     <div className="w-full rounded-xl bg-obsidian p-5 sm:p-8 overflow-hidden relative">
       {/* Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-        <span className="text-white/[0.04] text-6xl sm:text-8xl font-black uppercase tracking-widest -rotate-12 whitespace-nowrap">
+        <span className="text-white/[0.08] text-5xl sm:text-7xl font-black uppercase tracking-[0.2em] -rotate-20 whitespace-nowrap">
           dudubitcoin.com
         </span>
       </div>

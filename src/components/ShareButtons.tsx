@@ -9,7 +9,7 @@ interface ShareButtonsProps {
 export default function ShareButtons({ title, url, tweetText }: ShareButtonsProps) {
   const pageUrl = typeof window !== "undefined" ? url || window.location.href : "";
   const encodedUrl = encodeURIComponent(pageUrl);
-  const encodedTweet = encodeURIComponent((tweetText || title) + "\n\nvia @duaborabitcoin");
+  const encodedTweet = encodeURIComponent(tweetText || title);
 
   const handleCopy = async () => {
     try {
@@ -42,9 +42,9 @@ export default function ShareButtons({ title, url, tweetText }: ShareButtonsProp
         LinkedIn
       </a>
 
-      {/* X / Twitter — text only, no URL, so X renders the OG image card */}
+      {/* X / Twitter — text + URL so X renders the OG image card */}
       <a
-        href={`https://twitter.com/intent/tweet?text=${encodedTweet}`}
+        href={`https://twitter.com/intent/tweet?text=${encodedTweet}&url=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold border-2 border-obsidian/20 bg-obsidian/5 text-obsidian hover:bg-obsidian hover:text-white transition-all"
