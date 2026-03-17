@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { FLIPPENING_ASSETS } from "@/lib/bitcoin-data";
 
 export const runtime = "edge";
 export const alt = "Bitcoin Flippening Watch — Live Market Cap Tracker";
@@ -6,15 +7,8 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default function OGImage() {
-  const assets = [
-    { name: "Gold", cap: "$21.7T", icon: "🥇", pct: 8 },
-    { name: "Apple", cap: "$3.7T", icon: "🍎", pct: 46 },
-    { name: "NVIDIA", cap: "$3.4T", icon: "💻", pct: 50 },
-    { name: "Microsoft", cap: "$3.0T", icon: "🪟", pct: 57 },
-    { name: "Amazon", cap: "$2.3T", icon: "📦", pct: 74 },
-    { name: "Alphabet", cap: "$2.1T", icon: "🔤", pct: 81 },
-    { name: "Silver", cap: "$1.8T", icon: "🥈", pct: 95, flipped: true },
-  ];
+  // Sort assets by market cap descending for display
+  const assets = [...FLIPPENING_ASSETS].sort((a, b) => b.marketCapT - a.marketCapT);
 
   return new ImageResponse(
     (
@@ -46,26 +40,28 @@ export default function OGImage() {
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
-            <div style={{ fontSize: 14, color: "#F7931A", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 600 }}>BTC Market Cap</div>
-            <div style={{ fontSize: 36, fontWeight: 800, color: "#F7931A", marginTop: 4 }}>~$1.7T</div>
+            <div style={{ fontSize: 14, color: "#F7931A", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 600 }}>
+              Can BTC flip them all?
+            </div>
+            <div style={{ fontSize: 16, color: "#666", marginTop: 4 }}>
+              Live data · dudubitcoin.com
+            </div>
           </div>
         </div>
 
         {/* Asset rows */}
         <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
-          {assets.map((a) => (
+          {assets.map((a, i) => (
             <div key={a.name} style={{ display: "flex", alignItems: "center", gap: 12 }}>
               <div style={{ fontSize: 20, width: 28 }}>{a.icon}</div>
               <div style={{ width: 100, fontSize: 16, fontWeight: 700, color: "#FFFFFF" }}>{a.name}</div>
-              <div style={{ width: 60, fontSize: 13, color: "rgba(255,255,255,0.3)" }}>{a.cap}</div>
+              <div style={{ width: 60, fontSize: 13, color: "rgba(255,255,255,0.3)" }}>${a.marketCapT.toFixed(1)}T</div>
               <div style={{ flex: 1, height: 28, backgroundColor: "rgba(255,255,255,0.05)", borderRadius: 4, position: "relative", display: "flex" }}>
                 <div
                   style={{
-                    width: `${a.pct}%`,
+                    width: `${Math.min((a.marketCapT / assets[0].marketCapT) * 100, 100)}%`,
                     height: "100%",
-                    background: a.flipped
-                      ? "linear-gradient(90deg, #22c55e, #16a34a)"
-                      : "linear-gradient(90deg, #F7931ACC, #F7931A)",
+                    background: "linear-gradient(90deg, #F7931ACC, #F7931A)",
                     borderRadius: 4,
                     display: "flex",
                     alignItems: "center",
@@ -73,7 +69,7 @@ export default function OGImage() {
                   }}
                 >
                   <span style={{ color: "#FFFFFF", fontWeight: 700, fontSize: 13 }}>
-                    {a.flipped ? "FLIPPED" : `${a.pct}%`}
+                    ${a.marketCapT.toFixed(2)}T
                   </span>
                 </div>
               </div>

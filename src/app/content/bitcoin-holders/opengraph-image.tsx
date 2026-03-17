@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { TOP_HOLDERS } from "@/lib/bitcoin-data";
 
 export const runtime = "edge";
 export const alt = "Who Holds The Most Bitcoin? — Live Top Holders List";
@@ -6,14 +7,8 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default function OGImage() {
-  const holders = [
-    { name: "Satoshi Nakamoto", btc: "1,100K", type: "individual" },
-    { name: "BlackRock iShares", btc: "582K", type: "etf" },
-    { name: "Binance", btc: "546K", type: "exchange" },
-    { name: "Strategy (MSTR)", btc: "499K", type: "company" },
-    { name: "Coinbase", btc: "374K", type: "exchange" },
-    { name: "USA", btc: "198K", type: "nation" },
-  ];
+  const holders = TOP_HOLDERS.slice(0, 6);
+  const maxBtc = holders[0].btc;
 
   return new ImageResponse(
     (
@@ -49,10 +44,8 @@ export default function OGImage() {
 
         {/* Holder bars */}
         <div style={{ display: "flex", flexDirection: "column", gap: 12, flex: 1 }}>
-          {holders.map((h, i) => {
-            const maxBtc = 1100;
-            const btcNum = parseInt(h.btc.replace(/[K,]/g, ""));
-            const width = (btcNum / maxBtc) * 100;
+          {holders.map((h) => {
+            const width = (h.btc / maxBtc) * 100;
             return (
               <div key={h.name} style={{ display: "flex", alignItems: "center", gap: 16 }}>
                 <div style={{ width: 160, textAlign: "right", fontSize: 18, fontWeight: 700, color: "#FFFFFF", flexShrink: 0 }}>
@@ -71,7 +64,9 @@ export default function OGImage() {
                       paddingRight: 12,
                     }}
                   >
-                    <span style={{ color: "#FFFFFF", fontWeight: 700, fontSize: 16 }}>{h.btc}</span>
+                    <span style={{ color: "#FFFFFF", fontWeight: 700, fontSize: 16 }}>
+                      {h.btc.toLocaleString()}K
+                    </span>
                   </div>
                 </div>
               </div>
