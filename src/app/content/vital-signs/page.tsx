@@ -46,6 +46,14 @@ export default async function VitalSignsPage() {
         </div>
       </section>
 
+      {/* ── Share Buttons ── */}
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-6 py-5">
+        <ShareButtons
+          title="Bitcoin Vital Signs — Real-Time On-Chain Health Dashboard"
+          tweetText="Is Bitcoin healthy right now? Real-time on-chain dashboard tracking 13 metrics across 4 categories. Check the vital signs."
+        />
+      </div>
+
       {/* ── Category Cards ── */}
       <Section
         title="The Diagnostics"
@@ -73,13 +81,13 @@ export default async function VitalSignsPage() {
           <h2 className="text-2xl font-bold text-obsidian mb-4">
             How to Read Bitcoin Vital Signs
           </h2>
-          <p className="text-fog leading-relaxed mb-4">
+          <p className="text-obsidian/80 leading-relaxed mb-4">
             This dashboard distills 13 on-chain and market metrics into a single
             composite health score. Think of it as a doctor&apos;s checkup for
             Bitcoin — not a crystal ball, but a diagnostic snapshot of the network&apos;s
             current condition based on verifiable data.
           </p>
-          <p className="text-fog leading-relaxed mb-4">
+          <p className="text-obsidian/80 leading-relaxed mb-4">
             Each category captures a different angle: <strong className="text-obsidian">Miner Economics</strong> tracks
             the profitability and behavior of the entities securing the network.{" "}
             <strong className="text-obsidian">Holder Behavior</strong> watches for signs of accumulation
@@ -87,18 +95,12 @@ export default async function VitalSignsPage() {
             ETF inflows and exchange reserve changes. <strong className="text-obsidian">Top Signals</strong> aggregates
             the highest-signal indicators that historically correlate with cycle tops and bottoms.
           </p>
-          <p className="text-fog leading-relaxed mb-4">
+          <p className="text-obsidian/80 leading-relaxed mb-4">
             The health score isn&apos;t a buy/sell signal. It&apos;s a framework for
             thinking about where we are in the cycle — and whether the data supports
             the narrative you&apos;re hearing on Twitter.
           </p>
 
-          <div className="mt-6 pt-6 border-t border-card-border not-prose">
-            <ShareButtons
-              title="Bitcoin Vital Signs — Real-Time On-Chain Health Dashboard"
-              tweetText="Is Bitcoin healthy right now? Real-time on-chain dashboard tracking 13 metrics across 4 categories. Check the vital signs."
-            />
-          </div>
         </div>
       </Section>
 

@@ -49,6 +49,12 @@ export default async function FlippeningPage() {
           <div className="max-w-[900px]">
             <h1 className="sr-only">Bitcoin Flippening Watch — Will BTC Surpass Gold?</h1>
             <FlippeningChart btcData={btcData} />
+            <div className="mt-5">
+              <ShareButtons
+                title="Bitcoin Flippening Watch — BTC vs Gold Market Cap Tracker (Live)"
+                tweetText="How close is Bitcoin to flipping Gold? Live flippening tracker with real-time market cap comparisons."
+              />
+            </div>
           </div>
         </Section>
       </ScrollReveal>
@@ -60,7 +66,7 @@ export default async function FlippeningPage() {
             <h2 className="text-2xl font-bold text-obsidian mb-4">
               What Is The Flippening?
             </h2>
-            <p className="text-fog leading-relaxed mb-4">
+            <p className="text-obsidian/80 leading-relaxed mb-4">
               The &quot;flippening&quot; refers to the moment Bitcoin surpasses
               another major asset in total market capitalization. Each flip is a
               milestone in Bitcoin&apos;s journey toward becoming the world&apos;s
@@ -104,7 +110,7 @@ export default async function FlippeningPage() {
             <h3 className="text-lg font-bold text-obsidian mt-6 mb-3">
               How The Flip Price Works
             </h3>
-            <p className="text-fog leading-relaxed mb-4">
+            <p className="text-obsidian/80 leading-relaxed mb-4">
               The &quot;flip price&quot; shows what BTC would need to reach (per
               coin) to equal an asset&apos;s market cap, assuming the same circulating
               supply. As Bitcoin&apos;s supply grows slightly via mining, the actual
@@ -114,31 +120,24 @@ export default async function FlippeningPage() {
             <h3 className="text-lg font-bold text-obsidian mt-6 mb-3">
               Why Track The Flippening?
             </h3>
-            <p className="text-fog leading-relaxed mb-4">
+            <p className="text-obsidian/80 leading-relaxed mb-4">
               Every asset Bitcoin surpasses is a psychological and structural milestone.
               When BTC flipped Silver, the narrative shifted from &quot;digital experiment&quot;
               to &quot;legitimate store of value.&quot; When it flips a company like Amazon
               or Google, it proves that a decentralized network with no CEO, no headquarters,
               and no marketing budget can outvalue the most powerful corporations on earth.
             </p>
-            <p className="text-fog leading-relaxed mb-4">
+            <p className="text-obsidian/80 leading-relaxed mb-4">
               The ultimate target is Gold at ~$21.7 trillion. That flip would make Bitcoin
               the single most valuable asset class in human history — a 10x from current
               levels. This tracker shows you exactly how far along that journey we are,
               updated in real time.
             </p>
 
-            <p className="text-xs text-fog mt-4">
+            <p className="text-xs text-obsidian/50 mt-4">
               BTC data refreshes every 5 minutes via CoinGecko. Traditional asset
               market caps are approximate and updated periodically.
             </p>
-
-            <div className="mt-6 pt-6 border-t border-card-border not-prose">
-              <ShareButtons
-                title="Bitcoin Flippening Watch — BTC vs Gold Market Cap Tracker (Live)"
-                tweetText="How close is Bitcoin to flipping Gold? Live flippening tracker with real-time market cap comparisons."
-              />
-            </div>
           </div>
         </Section>
       </ScrollReveal>

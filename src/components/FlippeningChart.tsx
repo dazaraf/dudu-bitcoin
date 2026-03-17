@@ -14,7 +14,13 @@ export default function FlippeningChart({ btcData, compact }: Props) {
   const btcRank = allAssets.filter((a) => a.marketCapT > btcCapT).length + 1;
 
   return (
-    <div className="w-full rounded-xl bg-obsidian p-5 sm:p-8 overflow-hidden">
+    <div className="w-full rounded-xl bg-obsidian p-5 sm:p-8 overflow-hidden relative">
+      {/* Watermark */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+        <span className="text-white/[0.04] text-6xl sm:text-8xl font-black uppercase tracking-widest -rotate-12 whitespace-nowrap">
+          dudubitcoin.com
+        </span>
+      </div>
       {/* Header */}
       <div className="flex items-start justify-between mb-1">
         <div>

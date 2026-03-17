@@ -50,6 +50,20 @@ export default function FlowerMonitor({
         xmlns="http://www.w3.org/2000/svg"
         className="w-full h-auto"
       >
+        {/* Watermark */}
+        <text
+          x={250}
+          y={480}
+          textAnchor="middle"
+          fill="rgba(255,255,255,0.06)"
+          fontWeight="900"
+          fontSize="18"
+          letterSpacing="4"
+          style={{ pointerEvents: "none", textTransform: "uppercase" }}
+        >
+          dudubitcoin.com
+        </text>
+
         {/* Center circle */}
         <g
           style={{
