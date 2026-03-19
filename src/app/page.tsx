@@ -147,7 +147,7 @@ export default function Home() {
         </ScrollReveal>
 
         {/* Supporting: Live Data Tools */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[900px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[900px]">
           <ScrollReveal>
             <Link
               href="/content/bitcoin-holders"
@@ -187,6 +187,28 @@ export default function Home() {
               </svg>
             </Link>
           </ScrollReveal>
+
+          <ScrollReveal delay={200}>
+            <Link
+              href="/content/vital-signs"
+              className="group flex items-center gap-4 p-4 rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="w-12 h-12 rounded-lg bg-obsidian flex items-center justify-center shrink-0">
+                <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 12h4l3-9 4 18 3-9h4" />
+                </svg>
+              </div>
+              <div className="min-w-0">
+                <h3 className="text-sm font-bold text-obsidian group-hover:text-primary transition-colors">
+                  Bitcoin Vital Signs
+                </h3>
+                <p className="text-xs text-fog mt-0.5">On-chain health dashboard — updated every 4h</p>
+              </div>
+              <svg className="w-4 h-4 text-fog shrink-0 ml-auto transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </ScrollReveal>
         </div>
 
         <div className="mt-10 text-center">
@@ -204,7 +226,7 @@ export default function Home() {
         <Section id="newsletter" variant="light" padding="xl">
           <EmailCapture
             headline="Get Inside the Agentic Economy"
-            subtext="Join 11K+ builders, founders, and operators getting weekly playbooks, interviews, and tools. One email. Zero noise."
+            subtext="Join builders, founders, and operators getting weekly playbooks, interviews, and tools. One email. Zero noise."
           />
           <p className="text-center text-xs text-fog mt-4">
             Unsubscribe anytime. Your inbox, your rules.

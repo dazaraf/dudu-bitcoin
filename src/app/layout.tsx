@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Dudu Bitcoin",
   },
   description:
-    "Growth architect helping founders navigate AI, Bitcoin, and the agentic economy. GTM strategy, demand gen, audience building, and original crypto research for 11K+ subscribers.",
+    "Growth architect helping founders navigate AI, Bitcoin, and the agentic economy. GTM strategy, demand gen, audience building, and original crypto research.",
   keywords: [
     "agentic economy",
     "Bitcoin growth strategy",

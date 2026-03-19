@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     type: "profile",
     title: "About David Azaraf (Dudu Bitcoin)",
     description:
-      "Growth architect and crypto GTM strategist. 50+ expert conversations, 500K+ views, 11K+ subscribers. Consulting founders on AI growth strategy and the agentic economy.",
+      "Growth architect and crypto GTM strategist. 50+ expert conversations, 500K+ views. Consulting founders on AI growth strategy and the agentic economy.",
     url: "/about",
   },
 };

@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { fetchBtcMarketData, TOP_HOLDERS } from "@/lib/bitcoin-data";
+import { fetchBtcMarketData, fetchTopHolders } from "@/lib/bitcoin-data";
 import BitcoinHoldersChart from "@/components/BitcoinHoldersChart";
 import Section from "@/components/Section";
 import ScrollReveal from "@/components/ScrollReveal";
 import EmailCapture from "@/components/EmailCapture";
-
 export const metadata: Metadata = {
   title: "Who Holds The Most Bitcoin in 2026? Top BTC Holders List (Live)",
   description:
@@ -20,7 +19,10 @@ export const metadata: Metadata = {
 };
 
 export default async function BitcoinHoldersPage() {
-  const btcData = await fetchBtcMarketData();
+  const [btcData, holders] = await Promise.all([
+    fetchBtcMarketData(),
+    fetchTopHolders(),
+  ]);
 
   return (
     <>
@@ -42,7 +44,7 @@ export default async function BitcoinHoldersPage() {
         <Section>
           <div className="max-w-[900px]">
             <h1 className="sr-only">Who Holds The Most Bitcoin? — Top Bitcoin Holders in 2026</h1>
-            <BitcoinHoldersChart btcData={btcData} />
+            <BitcoinHoldersChart btcData={btcData} holders={holders} />
           </div>
         </Section>
       </ScrollReveal>
@@ -68,7 +70,7 @@ export default async function BitcoinHoldersPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 not-prose">
               {(["exchange", "etf", "company", "nation", "individual"] as const).map(
                 (type) => {
-                  const group = TOP_HOLDERS.filter((h) => h.type === type);
+                  const group = holders.filter((h) => h.type === type);
                   const total = group.reduce((sum, h) => sum + h.btc, 0);
                   const labels: Record<string, string> = {
                     exchange: "Exchanges",

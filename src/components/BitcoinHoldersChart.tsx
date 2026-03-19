@@ -1,8 +1,9 @@
-import { TOP_HOLDERS, BtcMarketData } from "@/lib/bitcoin-data";
+import { TOP_HOLDERS, BtcMarketData, Holder } from "@/lib/bitcoin-data";
 
 interface Props {
   btcData: BtcMarketData;
   compact?: boolean;
+  holders?: Holder[];
 }
 
 const TYPE_COLORS: Record<string, string> = {
@@ -13,9 +14,10 @@ const TYPE_COLORS: Record<string, string> = {
   nation: "#F5D580",
 };
 
-export default function BitcoinHoldersChart({ btcData, compact }: Props) {
-  const maxBtc = TOP_HOLDERS[0].btc;
-  const items = compact ? TOP_HOLDERS.slice(0, 6) : TOP_HOLDERS;
+export default function BitcoinHoldersChart({ btcData, compact, holders }: Props) {
+  const data = holders || TOP_HOLDERS;
+  const maxBtc = data[0].btc;
+  const items = compact ? data.slice(0, 6) : data;
 
   return (
     <div className="w-full rounded-xl bg-obsidian p-5 sm:p-8 overflow-hidden">
@@ -77,7 +79,7 @@ export default function BitcoinHoldersChart({ btcData, compact }: Props) {
         </span>
         {compact && (
           <span className="text-xs text-primary font-medium">
-            + {TOP_HOLDERS.length - items.length} more →
+            + {data.length - items.length} more →
           </span>
         )}
       </div>
