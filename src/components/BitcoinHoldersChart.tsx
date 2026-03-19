@@ -45,7 +45,6 @@ export default function BitcoinHoldersChart({ btcData, compact }: Props) {
       <div className="space-y-2.5">
         {items.map((holder) => {
           const widthPct = (holder.btc / maxBtc) * 100;
-          const valueUsd = btcData.price > 0 ? (holder.btc * 1000 * btcData.price) : 0;
           const color = TYPE_COLORS[holder.type] || "#F7931A";
 
           return (
@@ -66,11 +65,6 @@ export default function BitcoinHoldersChart({ btcData, compact }: Props) {
                   </span>
                 </div>
               </div>
-              {!compact && valueUsd > 0 && (
-                <span className="text-white/40 text-xs w-[70px] text-right shrink-0 hidden md:block">
-                  ${(valueUsd / 1e9).toFixed(1)}B
-                </span>
-              )}
             </div>
           );
         })}
