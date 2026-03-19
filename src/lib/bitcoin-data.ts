@@ -25,21 +25,21 @@ export async function fetchBtcMarketData(): Promise<BtcMarketData> {
   };
 }
 
-// Top Bitcoin holders — updated 2026-03-09
+// Top Bitcoin holders — updated 2026-03-19
 // Sources: bitbo.io/treasuries (ETFs/companies/nations), coinglass.com/Balance (exchanges)
 // Values in thousands of BTC
 export const TOP_HOLDERS = [
   { name: "Satoshi", btc: 1100, type: "individual" as const },
-  { name: "Coinbase", btc: 793, type: "exchange" as const },
-  { name: "BlackRock", btc: 774, type: "etf" as const },
-  { name: "Strategy", btc: 739, type: "company" as const },
-  { name: "Binance", btc: 653, type: "exchange" as const },
-  { name: "Bitfinex", btc: 402, type: "exchange" as const },
+  { name: "Coinbase", btc: 857, type: "exchange" as const },
+  { name: "BlackRock", btc: 786, type: "etf" as const },
+  { name: "Strategy", btc: 761, type: "company" as const },
+  { name: "Binance", btc: 632, type: "exchange" as const },
+  { name: "Bitfinex", btc: 401, type: "exchange" as const },
+  { name: "Grayscale", btc: 208, type: "etf" as const },
   { name: "USA", btc: 198, type: "nation" as const },
   { name: "China", btc: 194, type: "nation" as const },
-  { name: "Fidelity", btc: 185, type: "etf" as const },
-  { name: "Grayscale", btc: 156, type: "etf" as const },
-  { name: "Kraken", btc: 150, type: "exchange" as const },
+  { name: "Fidelity", btc: 189, type: "etf" as const },
+  { name: "Kraken", btc: 156, type: "exchange" as const },
   { name: "Block.one", btc: 140, type: "company" as const },
 ];
 
