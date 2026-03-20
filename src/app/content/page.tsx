@@ -105,31 +105,7 @@ export default async function ContentPage() {
       {/* 3. Live Data Tools */}
       <ScrollReveal>
         <Section title="Live Data Tools" subtitle="Free charts — updated every 5 minutes." variant="light">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[900px]">
-            {/* Vital Signs */}
-            <Link
-              href="/content/vital-signs"
-              className="group block overflow-hidden rounded-xl border border-card-border bg-obsidian shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div className="p-5">
-                <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.15em] rounded-full bg-primary text-white mb-3">
-                  Live Dashboard
-                </span>
-                <h3 className="text-lg font-bold text-white mb-1">
-                  Bitcoin Vital Signs
-                </h3>
-                <p className="text-sm text-white/50 leading-relaxed mb-3">
-                  MVRV, Puell Multiple, Reserve Risk, ETF flows &amp; network activity in one view. Updated every 4 hours.
-                </p>
-                <span className="inline-flex items-center gap-1 text-xs text-primary font-medium group-hover:underline">
-                  View dashboard
-                  <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-              </div>
-            </Link>
-
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[900px]">
             {/* Bitcoin Holders */}
             <Link
               href="/content/bitcoin-holders"

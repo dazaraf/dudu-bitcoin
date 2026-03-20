@@ -10,7 +10,7 @@
 
 - Homepage — hero, What I Do, testimonials, Fresh Signal, newsletter CTA, Book a Call
 - About page — timeline, highlights, thesis cards, social proof, CTAs
-- Content page — live dynamic charts (Bitcoin holders, flippening, vital signs), email-gated GTM report
+- Content page — live dynamic charts (Bitcoin holders, flippening), email-gated GTM report
 - Email capture — Kit (ConvertKit) integration, `?unlock=true` for newsletter subscribers
 - SEO — sitemap, robots.txt, OG image, JSON-LD, metadataBase, canonical URLs, meta descriptions
 - Vercel + domain setup
