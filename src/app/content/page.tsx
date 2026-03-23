@@ -99,6 +99,51 @@ export default async function ContentPage() {
               </div>
             </div>
           </Link>
+
+          {/* SEC x CFTC Guidance */}
+          <a
+            href="/content/sec-cftc-guidance/"
+            className="group block max-w-[900px] overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-lg transition-shadow mt-6"
+          >
+            <div className="p-8 sm:p-10">
+              <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full bg-obsidian text-white mb-5">
+                Regulation Breakdown
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-black text-obsidian leading-tight mb-4 text-balance">
+                SEC &amp; CFTC Crypto Guidance 2026:<br />What Is and Isn&apos;t a Security
+              </h3>
+              <p className="text-sm sm:text-base text-fog max-w-[600px] leading-relaxed mb-6">
+                The SEC and CFTC jointly classified crypto assets into 5 categories. BTC, ETH, SOL, DOGE, XRP are officially digital commodities. Staking, mining, NFTs, memecoins cleared. Full 68-page breakdown — reviewed with DLT Law.
+              </p>
+
+              <ul className="text-sm text-fog/60 space-y-2 mb-8 max-w-[500px]">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">&#x25B8;</span>
+                  5 new asset categories &mdash; what&apos;s a security, what&apos;s not
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">&#x25B8;</span>
+                  13 tokens explicitly named as digital commodities
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">&#x25B8;</span>
+                  Expert commentary from DLT Law
+                </li>
+              </ul>
+
+              <div className="flex items-center gap-4">
+                <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white font-semibold text-sm group-hover:brightness-110 transition-all">
+                  Read the Breakdown
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+                <span className="text-[10px] text-fog/40 uppercase tracking-wider">
+                  With DLT Law
+                </span>
+              </div>
+            </div>
+          </a>
         </Section>
       </ScrollReveal>
 
