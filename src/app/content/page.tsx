@@ -100,6 +100,51 @@ export default async function ContentPage() {
             </div>
           </Link>
 
+          {/* Babysitter Playbook */}
+          <Link
+            href="/content/babysitter-playbook"
+            className="group block max-w-[900px] overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-lg transition-shadow mt-6"
+          >
+            <div className="p-8 sm:p-10">
+              <span className="inline-block px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full bg-obsidian text-white mb-5">
+                Building in Public
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-black text-obsidian leading-tight mb-4 text-balance">
+                This Claude Code Orchestrator<br />Changed My Life
+              </h3>
+              <p className="text-sm sm:text-base text-fog max-w-[600px] leading-relaxed mb-6">
+                I&apos;ve been trying to make a personal website for years. It took me 1 week once I discovered this incredible Claude Code Orchestrator.
+              </p>
+
+              <ul className="text-sm text-fog/60 space-y-2 mb-8 max-w-[500px]">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">&#x25B8;</span>
+                  Real bug-fix walkthrough with zero manual intervention
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">&#x25B8;</span>
+                  10-minute setup guide: Claude Code + Babysitter
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">&#x25B8;</span>
+                  The 3 tiers of AI development skills
+                </li>
+              </ul>
+
+              <div className="flex items-center gap-4">
+                <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white font-semibold text-sm group-hover:brightness-110 transition-all">
+                  Read the Playbook
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+                <span className="text-[10px] text-fog/40 uppercase tracking-wider">
+                  12 min read
+                </span>
+              </div>
+            </div>
+          </Link>
+
           {/* SEC x CFTC Guidance */}
           <a
             href="/content/sec-cftc-guidance/"
@@ -150,7 +195,7 @@ export default async function ContentPage() {
       {/* 3. Live Data Tools */}
       <ScrollReveal>
         <Section title="Live Data Tools" subtitle="Free charts — updated every 5 minutes." variant="light">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[900px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[900px]">
             {/* Bitcoin Holders */}
             <Link
               href="/content/bitcoin-holders"
@@ -190,6 +235,35 @@ export default async function ContentPage() {
                 </p>
                 <span className="inline-flex items-center gap-1 text-xs text-primary font-medium group-hover:underline">
                   View live tracker
+                  <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </Link>
+
+            {/* Bitcoin Vital Signs */}
+            <Link
+              href="/content/vital-signs"
+              className="group block overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="h-[200px] bg-obsidian flex items-center justify-center">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F7931A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 12h4l3-9 4 18 3-9h4" />
+                </svg>
+              </div>
+              <div className="p-5">
+                <span className="inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.15em] rounded-full bg-[#F7931A] text-white mb-2">
+                  Live Dashboard
+                </span>
+                <h3 className="text-lg font-bold text-obsidian mb-1">
+                  Bitcoin Vital Signs
+                </h3>
+                <p className="text-sm text-fog leading-relaxed mb-2">
+                  14 on-chain metrics across 6 categories — your real-time Bitcoin health check.
+                </p>
+                <span className="inline-flex items-center gap-1 text-xs text-primary font-medium group-hover:underline">
+                  View dashboard
                   <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
