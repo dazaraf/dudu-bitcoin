@@ -5,6 +5,7 @@ import BitcoinHoldersChart from "@/components/BitcoinHoldersChart";
 import Section from "@/components/Section";
 import ScrollReveal from "@/components/ScrollReveal";
 import EmailCapture from "@/components/EmailCapture";
+import ExportableChart from "@/components/ExportableChart";
 export const metadata: Metadata = {
   title: "Who Holds The Most Bitcoin in 2026? Top BTC Holders List (Live)",
   description:
@@ -44,7 +45,9 @@ export default async function BitcoinHoldersPage() {
         <Section>
           <div className="max-w-[900px]">
             <h1 className="sr-only">Who Holds The Most Bitcoin? — Top Bitcoin Holders in 2026</h1>
-            <BitcoinHoldersChart btcData={btcData} holders={holders} />
+            <ExportableChart filename="top-bitcoin-holders">
+              <BitcoinHoldersChart btcData={btcData} holders={holders} />
+            </ExportableChart>
           </div>
         </Section>
       </ScrollReveal>

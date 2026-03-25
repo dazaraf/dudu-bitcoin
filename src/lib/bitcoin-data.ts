@@ -139,13 +139,131 @@ export async function fetchTopHolders(): Promise<Holder[]> {
   }
 }
 
-// Assets to compare for flippening (market caps in trillions USD)
-export const FLIPPENING_ASSETS = [
-  { name: "Gold", marketCapT: 21.7, icon: "🥇" },
-  { name: "NVIDIA", marketCapT: 4.502, icon: "🟢" },
-  { name: "Silver", marketCapT: 4.808, icon: "⬜" },
-  { name: "Alphabet", marketCapT: 4.016, icon: "🔵" },
-  { name: "Apple", marketCapT: 3.845, icon: "🍎" },
-  { name: "Microsoft", marketCapT: 3.546, icon: "🟦" },
-  { name: "Amazon", marketCapT: 2.634, icon: "📦" },
+// --- Flippening assets ---
+
+export interface FlippeningAsset {
+  name: string;
+  key: string; // logo key
+  marketCapT: number; // trillions USD
+}
+
+// Static fallback market caps (trillions USD)
+const FLIPPENING_FALLBACK: FlippeningAsset[] = [
+  { name: "Gold", key: "gold", marketCapT: 31.27 },
+  { name: "Silver", key: "silver", marketCapT: 4.07 },
+  { name: "NVIDIA", key: "nvidia", marketCapT: 4.34 },
+  { name: "Alphabet", key: "alphabet", marketCapT: 4.016 },
+  { name: "Apple", key: "apple", marketCapT: 3.845 },
+  { name: "Microsoft", key: "microsoft", marketCapT: 3.546 },
+  { name: "Amazon", key: "amazon", marketCapT: 2.634 },
 ];
+
+const AV_BASE = "https://www.alphavantage.co/query";
+
+// Above-ground supply estimates (troy ounces)
+const GOLD_SUPPLY_OZ = 6_912_750_000; // 215,000 tonnes — World Gold Council
+const SILVER_SUPPLY_OZ = 55_880_000_000; // ~1,738,000 tonnes — Silver Institute
+
+function avFetch(url: string, revalidate = 86400): Promise<Response> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10_000);
+  return fetch(url, {
+    signal: controller.signal,
+    next: { revalidate },
+  }).finally(() => clearTimeout(timeout));
+}
+
+async function fetchCommodityCapT(
+  symbol: "GOLD" | "SILVER"
+): Promise<number | null> {
+  const key = process.env.ALPHA_VANTAGE_API_KEY;
+  if (!key) return null;
+  try {
+    const res = await avFetch(
+      `${AV_BASE}?function=GOLD_SILVER_SPOT&symbol=${symbol}&apikey=${key}`
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    const price = parseFloat(data.price);
+    if (isNaN(price)) return null;
+    const supply = symbol === "GOLD" ? GOLD_SUPPLY_OZ : SILVER_SUPPLY_OZ;
+    return (price * supply) / 1e12;
+  } catch {
+    return null;
+  }
+}
+
+async function fetchStockCapT(ticker: string): Promise<number | null> {
+  const key = process.env.ALPHA_VANTAGE_API_KEY;
+  if (!key) return null;
+  try {
+    const res = await avFetch(
+      `${AV_BASE}?function=OVERVIEW&symbol=${ticker}&apikey=${key}`
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    const cap = parseInt(data.MarketCapitalization);
+    return isNaN(cap) ? null : cap / 1e12;
+  } catch {
+    return null;
+  }
+}
+
+const STOCK_TICKERS: Record<string, string> = {
+  nvidia: "NVDA",
+  alphabet: "GOOG",
+  apple: "AAPL",
+  microsoft: "MSFT",
+  amazon: "AMZN",
+};
+
+// Serialize API calls with 1.5s delay to respect Alpha Vantage 5 req/min limit
+async function fetchSequentially<T>(
+  fns: (() => Promise<T>)[]
+): Promise<(T | null)[]> {
+  const results: (T | null)[] = [];
+  for (let i = 0; i < fns.length; i++) {
+    try {
+      results.push(await fns[i]());
+    } catch {
+      results.push(null);
+    }
+    if (i < fns.length - 1) {
+      await new Promise((r) => setTimeout(r, 1500));
+    }
+  }
+  return results;
+}
+
+export async function fetchFlippeningAssets(): Promise<FlippeningAsset[]> {
+  try {
+    const stockKeys = Object.keys(STOCK_TICKERS);
+    const fns: (() => Promise<number | null>)[] = [
+      () => fetchCommodityCapT("GOLD"),
+      () => fetchCommodityCapT("SILVER"),
+      ...stockKeys.map((k) => () => fetchStockCapT(STOCK_TICKERS[k])),
+    ];
+
+    const results = await fetchSequentially(fns);
+
+    const assets: FlippeningAsset[] = FLIPPENING_FALLBACK.map((fb) => {
+      let live: number | null = null;
+      if (fb.key === "gold") live = results[0];
+      else if (fb.key === "silver") live = results[1];
+      else {
+        const idx = stockKeys.indexOf(fb.key);
+        if (idx >= 0) live = results[2 + idx];
+      }
+      return { ...fb, marketCapT: live ?? fb.marketCapT };
+    });
+
+    // Sort by market cap descending
+    assets.sort((a, b) => b.marketCapT - a.marketCapT);
+    return assets;
+  } catch {
+    return FLIPPENING_FALLBACK;
+  }
+}
+
+// Re-export static list for compact/homepage usage
+export const FLIPPENING_ASSETS = FLIPPENING_FALLBACK;

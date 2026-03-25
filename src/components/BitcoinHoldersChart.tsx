@@ -28,14 +28,14 @@ export default function BitcoinHoldersChart({ btcData, compact, holders }: Props
             Who Holds The Most{" "}
             <span className="text-primary">Bitcoin?</span>
           </h3>
-          <p className="text-xs text-white/50 mt-1 flex items-center gap-1.5">
+          <p className="text-xs text-white/90 mt-1 flex items-center gap-1.5">
             <span className="inline-block w-2 h-2 rounded-full bg-primary" />
             Bitcoin Held (thousands)
           </p>
         </div>
         {btcData.price > 0 && (
           <div className="text-right hidden sm:block">
-            <p className="text-xs text-white/40 uppercase tracking-wider">BTC Price</p>
+            <p className="text-xs text-white/80 uppercase tracking-wider">BTC Price</p>
             <p className="text-lg font-bold text-primary">
               ${btcData.price.toLocaleString("en-US", { maximumFractionDigits: 0 })}
             </p>
@@ -74,7 +74,7 @@ export default function BitcoinHoldersChart({ btcData, compact, holders }: Props
 
       {/* Footer */}
       <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
-        <span className="text-[10px] text-white/30 uppercase tracking-wider">
+        <span className="text-[10px] text-white/80 uppercase tracking-wider">
           dudubitcoin.com
         </span>
         {compact && (

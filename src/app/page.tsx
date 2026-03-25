@@ -128,7 +128,7 @@ export default function Home() {
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight mb-3 text-balance">
                 $2.5T Spent on AI.<br />Zero Way to Verify It.
               </h3>
-              <p className="text-sm sm:text-base text-white/50 max-w-[600px] leading-relaxed mb-6">
+              <p className="text-sm sm:text-base text-white/90 max-w-[600px] leading-relaxed mb-6">
                 Original research on the AI verification gap — who&apos;s building the fix, who&apos;s funding it, and where zero-knowledge cryptography changes everything.
               </p>
               <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:underline">

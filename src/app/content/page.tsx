@@ -67,11 +67,11 @@ export default async function ContentPage() {
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight mb-4 text-balance">
                 $2.5T Spent on AI.<br />Zero Way to Verify It.
               </h3>
-              <p className="text-sm sm:text-base text-white/50 max-w-[600px] leading-relaxed mb-6">
+              <p className="text-sm sm:text-base text-white/90 max-w-[600px] leading-relaxed mb-6">
                 Enterprises are pouring trillions into AI systems they fundamentally cannot verify. Zero-knowledge cryptography changes that equation entirely. This report maps the competitive landscape, breaks down the GTM strategies, and identifies where the real leverage sits.
               </p>
 
-              <ul className="text-sm text-white/40 space-y-2 mb-8 max-w-[500px]">
+              <ul className="text-sm text-white/80 space-y-2 mb-8 max-w-[500px]">
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-0.5">&#x25B8;</span>
                   Why ZK proofs are the only viable path to AI trust
@@ -93,7 +93,7 @@ export default async function ContentPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </span>
-                <span className="text-[10px] text-white/25 uppercase tracking-wider">
+                <span className="text-[10px] text-white/80 uppercase tracking-wider">
                   Free with email
                 </span>
               </div>

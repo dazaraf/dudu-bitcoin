@@ -62,14 +62,14 @@ export default function Footer() {
           <Link href="/" className="text-lg font-bold text-white">
             DUDU BITCOIN
           </Link>
-          <p className="mt-3 text-sm text-white/50 leading-relaxed">
+          <p className="mt-3 text-sm text-white/90 leading-relaxed">
             Growth Architect for the Agentic Economy.
           </p>
         </div>
 
         {/* Navigation */}
         <nav aria-label="Footer navigation">
-          <h4 className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-4">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-white/80 mb-4">
             Navigation
           </h4>
           <ul className="flex flex-col gap-2.5">
@@ -88,7 +88,7 @@ export default function Footer() {
 
         {/* Content */}
         <nav aria-label="Content links">
-          <h4 className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-4">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-white/80 mb-4">
             Content
           </h4>
           <ul className="flex flex-col gap-2.5">
@@ -107,7 +107,7 @@ export default function Footer() {
 
         {/* Connect */}
         <div>
-          <h4 className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-4">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-white/80 mb-4">
             Connect
           </h4>
           <div className="flex gap-3">
@@ -129,10 +129,10 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-6 border-t border-white/10">
-        <p className="text-xs text-white/30 text-center">
+        <p className="text-xs text-white/80 text-center">
           &copy; {new Date().getFullYear()} Dudu Bitcoin. All rights reserved.
         </p>
-        <p className="text-[10px] text-white/20 text-center mt-1">
+        <p className="text-[10px] text-white/80 text-center mt-1">
           Of course I vibe coded this — what do you think I am, Amish?
         </p>
       </div>

@@ -1,0 +1,14 @@
+# Dudu Bitcoin
+
+> Dudu Bitcoin (dudubitcoin.com) is a personal brand site by David Azaraf, a growth architect helping web3 founders turn expertise into distribution. The site publishes live Bitcoin market data, intelligence briefings, and educational content for crypto-curious professionals.
+
+## Core Content
+
+- [Bitcoin Flippening Index](https://dudubitcoin.com/content/flippening): Live tracker comparing Bitcoin's market cap against Gold, Apple, NVIDIA, Microsoft, Amazon, and Alphabet. Updated daily with flip price calculations.
+- [Top Bitcoin Holders](https://dudubitcoin.com/content/bitcoin-holders): Who holds the most Bitcoin — Satoshi, exchanges, ETFs, public companies, and nation states. Live data from Bitbo.io.
+- [Bitcoin GTM Report](https://dudubitcoin.com/content/gtm-report): Go-to-market intelligence report for Bitcoin-adjacent businesses.
+- [Content Hub](https://dudubitcoin.com/content): All published content, live data tools, and infographics.
+
+## About
+
+- [About Dudu](https://dudubitcoin.com/about): Background, expertise, testimonials, and booking link.

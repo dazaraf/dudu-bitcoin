@@ -134,7 +134,7 @@ export default function AboutPage() {
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
                 The Journey
               </h2>
-              <p className="text-white/50 text-lg">
+              <p className="text-white/90 text-lg">
                 From South Africa to the frontier of crypto & AI.
               </p>
             </div>
