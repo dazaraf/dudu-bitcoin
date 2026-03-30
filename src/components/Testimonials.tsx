@@ -178,7 +178,7 @@ export default function Testimonials() {
         <button
           onClick={prev}
           aria-label="Previous"
-          className="w-10 h-10 rounded-full border border-card-border bg-white flex items-center justify-center text-fog hover:text-primary hover:border-primary transition-colors cursor-pointer"
+          className="w-10 h-10 rounded-full border border-card-border bg-white flex items-center justify-center text-obsidian/60 hover:text-primary hover:border-primary transition-colors cursor-pointer"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="15 18 9 12 15 6" />
@@ -203,7 +203,7 @@ export default function Testimonials() {
         <button
           onClick={next}
           aria-label="Next"
-          className="w-10 h-10 rounded-full border border-card-border bg-white flex items-center justify-center text-fog hover:text-primary hover:border-primary transition-colors cursor-pointer"
+          className="w-10 h-10 rounded-full border border-card-border bg-white flex items-center justify-center text-obsidian/60 hover:text-primary hover:border-primary transition-colors cursor-pointer"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="9 18 15 12 9 6" />

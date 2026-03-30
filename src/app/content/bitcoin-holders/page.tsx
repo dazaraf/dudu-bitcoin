@@ -30,7 +30,7 @@ export default async function BitcoinHoldersPage() {
       {/* Breadcrumb */}
       <div className="w-full bg-white border-b border-card-border">
         <div className="max-w-[900px] mx-auto px-4 sm:px-6 py-3">
-          <nav className="text-sm text-fog">
+          <nav className="text-sm text-obsidian/60">
             <Link href="/content" className="hover:text-primary transition-colors">
               Content
             </Link>
@@ -59,7 +59,7 @@ export default async function BitcoinHoldersPage() {
             <h2 className="text-2xl font-bold text-obsidian mb-4">
               Understanding Bitcoin Ownership
             </h2>
-            <p className="text-fog leading-relaxed mb-4">
+            <p className="text-obsidian/60 leading-relaxed mb-4">
               Bitcoin ownership is concentrated among a handful of entities, but the
               landscape is shifting fast. ETFs now hold more Bitcoin than any single
               nation-state, and public companies are racing to add BTC to their
@@ -87,18 +87,18 @@ export default async function BitcoinHoldersPage() {
                       key={type}
                       className="p-4 rounded-lg border border-card-border bg-white"
                     >
-                      <p className="text-xs text-fog uppercase tracking-wider mb-1">
+                      <p className="text-xs text-obsidian/60 uppercase tracking-wider mb-1">
                         {labels[type]}
                       </p>
                       <p className="text-xl font-bold text-obsidian">
                         {total.toLocaleString()}K BTC
                       </p>
                       {btcData.price > 0 && (
-                        <p className="text-xs text-fog">
+                        <p className="text-xs text-obsidian/60">
                           ≈ ${((total * 1000 * btcData.price) / 1e9).toFixed(1)}B USD
                         </p>
                       )}
-                      <p className="text-[10px] text-fog mt-1">
+                      <p className="text-[10px] text-obsidian/60 mt-1">
                         {group.map((h) => h.name).join(", ")}
                       </p>
                     </div>
@@ -107,11 +107,11 @@ export default async function BitcoinHoldersPage() {
               )}
             </div>
 
-            <p className="text-fog leading-relaxed mt-6">
+            <p className="text-obsidian/60 leading-relaxed mt-6">
               Numbers are approximations based on on-chain analysis, public filings,
               and exchange disclosures. Actual holdings may differ.
             </p>
-            <p className="text-xs text-fog mt-2">
+            <p className="text-xs text-obsidian/60 mt-2">
               Data refreshes every 5 minutes. BTC price via CoinGecko.
             </p>
           </div>

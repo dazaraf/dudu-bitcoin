@@ -25,7 +25,7 @@ export default function SocialProof({ stats = defaultStats }: SocialProofProps) 
               <p className="text-3xl md:text-4xl font-bold text-obsidian mb-1">
                 <CountUp value={stat.value} />
               </p>
-              <p className="text-xs uppercase tracking-wider text-fog font-medium">
+              <p className="text-xs uppercase tracking-wider text-obsidian/60 font-medium">
                 {stat.label}
               </p>
             </div>

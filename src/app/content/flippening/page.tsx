@@ -141,7 +141,7 @@ export default async function FlippeningPage() {
       {/* Breadcrumb */}
       <div className="w-full bg-white border-b border-card-border">
         <div className="max-w-[900px] mx-auto px-4 sm:px-6 py-3">
-          <nav className="text-sm text-fog">
+          <nav className="text-sm text-obsidian/60">
             <Link href="/content" className="hover:text-primary transition-colors">
               Content
             </Link>
@@ -158,7 +158,7 @@ export default async function FlippeningPage() {
             <h1 className="text-3xl sm:text-4xl font-black text-obsidian mb-4 leading-tight">
               Bitcoin Flippening Index — Live Market Cap Tracker
             </h1>
-            <p className="text-fog text-lg leading-relaxed mb-6 max-w-[720px]">
+            <p className="text-obsidian/60 text-lg leading-relaxed mb-6 max-w-[720px]">
               Bitcoin still has a <strong className="text-obsidian">{goldMultipleStr}x</strong> climb
               to catch Gold&apos;s ${goldAsset?.marketCapT.toFixed(1) ?? "31"}T market cap.
               At <strong className="text-obsidian">${btcCapT.toFixed(2)}T</strong>, BTC has
@@ -186,7 +186,7 @@ export default async function FlippeningPage() {
               <FlippeningChart btcData={btcData} assets={assets} />
             </ExportableChart>
 
-            <p className="text-xs text-fog mt-3">
+            <p className="text-xs text-obsidian/60 mt-3">
               Last updated: {today}. BTC price via CoinGecko (5-min refresh). Asset market caps via Alpha Vantage (daily).
               Gold supply estimate: 215,000 tonnes (World Gold Council). Silver supply: ~1.74M tonnes (Silver Institute).
             </p>
@@ -205,7 +205,7 @@ export default async function FlippeningPage() {
             {btcData.price > 0 && (
               <div className="not-prose grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                 <div className="p-4 rounded-lg border border-card-border bg-white text-center">
-                  <p className="text-xs text-fog uppercase tracking-wider mb-1">
+                  <p className="text-xs text-obsidian/60 uppercase tracking-wider mb-1">
                     BTC Market Cap
                   </p>
                   <p className="text-xl font-bold text-obsidian">
@@ -213,7 +213,7 @@ export default async function FlippeningPage() {
                   </p>
                 </div>
                 <div className="p-4 rounded-lg border border-card-border bg-white text-center">
-                  <p className="text-xs text-fog uppercase tracking-wider mb-1">
+                  <p className="text-xs text-obsidian/60 uppercase tracking-wider mb-1">
                     Assets Flipped
                   </p>
                   <p className="text-xl font-bold text-green-600">
@@ -222,13 +222,13 @@ export default async function FlippeningPage() {
                 </div>
                 {nextTarget && (
                   <div className="p-4 rounded-lg border border-card-border bg-white text-center">
-                    <p className="text-xs text-fog uppercase tracking-wider mb-1">
+                    <p className="text-xs text-obsidian/60 uppercase tracking-wider mb-1">
                       Next Target
                     </p>
                     <p className="text-xl font-bold text-primary">
                       {nextTarget.name}
                     </p>
-                    <p className="text-xs text-fog">
+                    <p className="text-xs text-obsidian/60">
                       ${nextTarget.marketCapT.toFixed(3)}T
                     </p>
                   </div>
@@ -242,7 +242,7 @@ export default async function FlippeningPage() {
             </h3>
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-left border border-card-border rounded-lg overflow-hidden">
-                <thead className="bg-gray-50 text-fog text-xs uppercase">
+                <thead className="bg-gray-50 text-obsidian/60 text-xs uppercase">
                   <tr>
                     <th className="px-4 py-2">Asset</th>
                     <th className="px-4 py-2 text-right">Market Cap</th>
@@ -262,12 +262,12 @@ export default async function FlippeningPage() {
                     return (
                       <tr key={asset.key} className="bg-white">
                         <td className="px-4 py-2 font-medium text-obsidian">{asset.name}</td>
-                        <td className="px-4 py-2 text-right text-fog">${asset.marketCapT.toFixed(2)}T</td>
-                        <td className="px-4 py-2 text-right text-fog">{pct.toFixed(1)}%</td>
+                        <td className="px-4 py-2 text-right text-obsidian/60">${asset.marketCapT.toFixed(2)}T</td>
+                        <td className="px-4 py-2 text-right text-obsidian/60">{pct.toFixed(1)}%</td>
                         <td className="px-4 py-2 text-right font-medium text-obsidian">
                           ${fp >= 1e6 ? `${(fp / 1e6).toFixed(2)}M` : `${(fp / 1e3).toFixed(0)}K`}
                         </td>
-                        <td className={`px-4 py-2 text-right font-bold ${isFlipped ? "text-green-600" : "text-fog"}`}>
+                        <td className={`px-4 py-2 text-right font-bold ${isFlipped ? "text-green-600" : "text-obsidian/60"}`}>
                           {isFlipped ? "FLIPPED" : "Pending"}
                         </td>
                       </tr>
@@ -287,7 +287,7 @@ export default async function FlippeningPage() {
             <h2 className="text-2xl font-bold text-obsidian mb-4">
               What Is The Bitcoin Flippening?
             </h2>
-            <p className="text-fog leading-relaxed mb-4">
+            <p className="text-obsidian/60 leading-relaxed mb-4">
               The Bitcoin flippening refers to the moment Bitcoin&apos;s total market
               capitalization surpasses that of another major asset class or company. Each
               flip is a milestone in Bitcoin&apos;s journey toward becoming the world&apos;s
@@ -298,7 +298,7 @@ export default async function FlippeningPage() {
             <h3 className="text-lg font-bold text-obsidian mt-6 mb-3">
               How Is The Flip Price Calculated?
             </h3>
-            <p className="text-fog leading-relaxed mb-4">
+            <p className="text-obsidian/60 leading-relaxed mb-4">
               The flip price shows the per-coin BTC price needed to equal a target
               asset&apos;s market cap. The formula is: <strong>(BTC price × target market cap) ÷ BTC market cap</strong>.
               As Bitcoin&apos;s circulating supply grows via mining at approximately 0.8%
@@ -310,7 +310,7 @@ export default async function FlippeningPage() {
             <h3 className="text-lg font-bold text-obsidian mt-6 mb-3">
               Data Sources and Methodology
             </h3>
-            <p className="text-fog leading-relaxed mb-4">
+            <p className="text-obsidian/60 leading-relaxed mb-4">
               Bitcoin price and market cap data comes from the{" "}
               <strong>CoinGecko API</strong>, refreshing every 5 minutes. Stock market
               capitalizations for Apple, NVIDIA, Microsoft, Amazon, and Alphabet are
@@ -334,7 +334,7 @@ export default async function FlippeningPage() {
             <h3 className="text-base font-bold text-obsidian mt-4 mb-2">
               What is the Bitcoin flippening?
             </h3>
-            <p className="text-fog leading-relaxed mb-4">
+            <p className="text-obsidian/60 leading-relaxed mb-4">
               The Bitcoin flippening is the moment Bitcoin surpasses another major asset
               in total market capitalization. As of {today}, Bitcoin has flipped{" "}
               {flipped.length} of {assets.length} tracked assets. The largest remaining
@@ -344,7 +344,7 @@ export default async function FlippeningPage() {
             <h3 className="text-base font-bold text-obsidian mt-4 mb-2">
               What price does Bitcoin need to reach to flip Gold?
             </h3>
-            <p className="text-fog leading-relaxed mb-4">
+            <p className="text-obsidian/60 leading-relaxed mb-4">
               Bitcoin would need to reach approximately $
               {goldFlipPrice >= 1e6
                 ? `${(goldFlipPrice / 1e6).toFixed(2)} million`
@@ -357,7 +357,7 @@ export default async function FlippeningPage() {
             <h3 className="text-base font-bold text-obsidian mt-4 mb-2">
               How often is the flippening data updated?
             </h3>
-            <p className="text-fog leading-relaxed mb-4">
+            <p className="text-obsidian/60 leading-relaxed mb-4">
               Bitcoin price and market cap refresh every 5 minutes via CoinGecko. Stock
               market caps (Apple, NVIDIA, Microsoft, Amazon, Alphabet) and commodity
               spot prices (Gold, Silver) update daily via Alpha Vantage.
@@ -366,7 +366,7 @@ export default async function FlippeningPage() {
             <h3 className="text-base font-bold text-obsidian mt-4 mb-2">
               Which assets has Bitcoin already flipped?
             </h3>
-            <p className="text-fog leading-relaxed mb-4">
+            <p className="text-obsidian/60 leading-relaxed mb-4">
               {flipped.length > 0
                 ? `As of ${today}, Bitcoin has surpassed ${flipped.map((a) => `${a.name} ($${a.marketCapT.toFixed(2)}T)`).join(", ")} by total market capitalization.`
                 : `As of ${today}, Bitcoin has not yet flipped any of the ${assets.length} major assets tracked here. The closest target is ${nextTarget?.name ?? "pending"}.`}
@@ -375,7 +375,7 @@ export default async function FlippeningPage() {
             <h3 className="text-base font-bold text-obsidian mt-4 mb-2">
               How is the flip price calculated?
             </h3>
-            <p className="text-fog leading-relaxed mb-4">
+            <p className="text-obsidian/60 leading-relaxed mb-4">
               The flip price equals (current BTC price × target asset&apos;s market cap) ÷
               Bitcoin&apos;s market cap. This gives the per-coin BTC price at which both
               assets would have equal total market capitalizations, assuming Bitcoin&apos;s

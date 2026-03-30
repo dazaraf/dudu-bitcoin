@@ -15,7 +15,7 @@ function TeaserContent() {
       <h2 className="text-2xl sm:text-3xl font-bold text-obsidian mb-4">
         AI&apos;s $2.5 Trillion Blind Spot
       </h2>
-      <div className="space-y-4 text-fog leading-relaxed">
+      <div className="space-y-4 text-obsidian/60 leading-relaxed">
         <p>
           In the next twelve months, enterprise AI spending will cross{" "}
           <strong className="text-obsidian">$2.5 trillion globally</strong>. AI

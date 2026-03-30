@@ -79,7 +79,7 @@ export default function LeadMagnetPopup() {
         <button
           type="button"
           onClick={dismiss}
-          className="absolute top-4 right-4 text-fog hover:text-obsidian transition-colors cursor-pointer"
+          className="absolute top-4 right-4 text-obsidian/60 hover:text-obsidian transition-colors cursor-pointer"
           aria-label="Close popup"
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -98,7 +98,7 @@ export default function LeadMagnetPopup() {
           <h3 className="text-xl font-bold text-obsidian mb-2">
             Get the Agentic Economy Playbook
           </h3>
-          <p className="text-sm text-fog mb-6">
+          <p className="text-sm text-obsidian/60 mb-6">
             Free guide: How founders are building distribution with AI agents.
             Frameworks, case studies, and actionable strategies.
           </p>
@@ -139,7 +139,7 @@ export default function LeadMagnetPopup() {
             )}
           </div>
 
-          <p className="mt-4 text-[11px] text-fog">
+          <p className="mt-4 text-[11px] text-obsidian/60">
             No spam. Unsubscribe anytime.
           </p>
         </div>

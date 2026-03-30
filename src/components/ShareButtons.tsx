@@ -11,7 +11,7 @@ export default function ShareButtons({ title, tweetText }: Props) {
 
   return (
     <div className="flex items-center gap-3 justify-center">
-      <span className="text-sm text-fog font-medium">Share:</span>
+      <span className="text-sm text-obsidian/60 font-medium">Share:</span>
       <a
         href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`}
         target="_blank"
@@ -30,7 +30,7 @@ export default function ShareButtons({ title, tweetText }: Props) {
       </a>
       <button
         onClick={() => navigator.clipboard?.writeText(url)}
-        className="px-4 py-2 rounded-lg border border-card-border text-fog text-sm font-medium hover:bg-gray-50 transition-colors"
+        className="px-4 py-2 rounded-lg border border-card-border text-obsidian/60 text-sm font-medium hover:bg-gray-50 transition-colors"
       >
         Copy Link
       </button>

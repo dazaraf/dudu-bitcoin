@@ -39,12 +39,12 @@ export default function PricingCard({
 
       <div className="flex items-baseline gap-1 mb-6">
         <span className="text-4xl font-bold text-obsidian">{price}</span>
-        {period && <span className="text-sm text-fog">{period}</span>}
+        {period && <span className="text-sm text-obsidian/60">{period}</span>}
       </div>
 
       <ul className="flex flex-col gap-3 mb-8 flex-1">
         {features.map((feature) => (
-          <li key={feature} className="flex items-start gap-2.5 text-sm text-fog">
+          <li key={feature} className="flex items-start gap-2.5 text-sm text-obsidian/60">
             <svg
               className="w-4 h-4 mt-0.5 text-primary shrink-0"
               fill="none"

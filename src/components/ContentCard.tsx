@@ -73,13 +73,13 @@ export default function ContentCard({
       {/* Text content */}
       <div className="p-5">
         {date && (
-          <time className="text-xs text-fog mb-2 block">{date}</time>
+          <time className="text-xs text-obsidian/60 mb-2 block">{date}</time>
         )}
         <h3 className={`text-base font-semibold text-obsidian mb-2 line-clamp-2 ${href ? "group-hover:text-primary transition-colors duration-200" : ""}`}>
           {title}
         </h3>
         {excerpt && (
-          <p className="text-sm text-fog line-clamp-2 leading-relaxed">
+          <p className="text-sm text-obsidian/60 line-clamp-2 leading-relaxed">
             {excerpt}
           </p>
         )}

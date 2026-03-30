@@ -160,9 +160,9 @@ export default function Home() {
                 <h3 className="text-sm font-bold text-obsidian group-hover:text-primary transition-colors">
                   Who Holds The Most Bitcoin?
                 </h3>
-                <p className="text-xs text-fog mt-0.5">Live data — updated every 5 min</p>
+                <p className="text-xs text-obsidian/60 mt-0.5">Live data — updated every 5 min</p>
               </div>
-              <svg className="w-4 h-4 text-fog shrink-0 ml-auto transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-4 h-4 text-obsidian/60 shrink-0 ml-auto transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
@@ -180,14 +180,36 @@ export default function Home() {
                 <h3 className="text-sm font-bold text-obsidian group-hover:text-primary transition-colors">
                   Bitcoin Flippening Watch
                 </h3>
-                <p className="text-xs text-fog mt-0.5">BTC vs Gold, Apple, NVIDIA &amp; more</p>
+                <p className="text-xs text-obsidian/60 mt-0.5">BTC vs Gold, Apple, NVIDIA &amp; more</p>
               </div>
-              <svg className="w-4 h-4 text-fog shrink-0 ml-auto transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-4 h-4 text-obsidian/60 shrink-0 ml-auto transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
           </ScrollReveal>
 
+
+          <ScrollReveal delay={200}>
+            <Link
+              href="/content/vital-signs"
+              className="group flex items-center gap-4 p-4 rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="w-12 h-12 rounded-lg bg-obsidian flex items-center justify-center shrink-0">
+                <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 12h4l3-9 4 18 3-9h4" />
+                </svg>
+              </div>
+              <div className="min-w-0">
+                <h3 className="text-sm font-bold text-obsidian group-hover:text-primary transition-colors">
+                  Bitcoin Vital Signs
+                </h3>
+                <p className="text-xs text-obsidian/60 mt-0.5">On-chain health scored 0-100</p>
+              </div>
+              <svg className="w-4 h-4 text-obsidian/60 shrink-0 ml-auto transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </ScrollReveal>
 
         </div>
 
@@ -208,7 +230,7 @@ export default function Home() {
             headline="Get Inside the Agentic Economy"
             subtext="Join builders, founders, and operators getting weekly playbooks, interviews, and tools. One email. Zero noise."
           />
-          <p className="text-center text-xs text-fog mt-4">
+          <p className="text-center text-xs text-obsidian/60 mt-4">
             Unsubscribe anytime. Your inbox, your rules.
           </p>
         </Section>
@@ -221,7 +243,7 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl font-bold text-obsidian mb-4">
               Building something in the agentic economy?
             </h2>
-            <p className="text-lg text-fog mb-10 text-balance">
+            <p className="text-lg text-obsidian/60 mb-10 text-balance">
               Whether you&apos;re a founder looking for your edge, a team that needs to understand what&apos;s coming, or an event that wants the signal. I&apos;d love to hear what you&apos;re working on.
             </p>
             <Button variant="primary" size="lg" href="https://calendly.com/dazaraf/meet-dudu">

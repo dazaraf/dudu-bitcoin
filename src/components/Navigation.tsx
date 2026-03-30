@@ -56,7 +56,7 @@ export default function Navigation() {
                     className={`relative text-sm font-medium transition-colors duration-200 pb-1 ${
                       isActive
                         ? "text-obsidian"
-                        : "text-fog hover:text-obsidian"
+                        : "text-obsidian/60 hover:text-obsidian"
                     }`}
                   >
                     {link.label}
@@ -116,7 +116,7 @@ export default function Navigation() {
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
                 className={`text-3xl font-semibold transition-colors ${
-                  isActive ? "text-primary" : "text-fog hover:text-obsidian"
+                  isActive ? "text-primary" : "text-obsidian/60 hover:text-obsidian"
                 }`}
               >
                 {link.label}

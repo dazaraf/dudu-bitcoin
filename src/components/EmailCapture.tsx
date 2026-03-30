@@ -47,7 +47,7 @@ export default function EmailCapture({
       <h3 className="text-2xl md:text-3xl font-bold text-obsidian mb-2">
         {headline}
       </h3>
-      <p className="text-sm text-fog mb-6">{subtext}</p>
+      <p className="text-sm text-obsidian/60 mb-6">{subtext}</p>
 
       {status === "success" ? (
         <div className="flex items-center justify-center gap-2 text-green-600 font-medium py-3">

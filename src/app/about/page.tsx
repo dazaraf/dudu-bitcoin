@@ -108,7 +108,7 @@ export default function AboutPage() {
           <h1 className="text-4xl sm:text-5xl md:text-[64px] font-bold leading-[1.1] tracking-tight text-obsidian mb-4 text-balance">
             About Dudu
           </h1>
-          <p className="text-lg md:text-xl text-fog max-w-[640px] mx-auto leading-relaxed text-balance">
+          <p className="text-lg md:text-xl text-obsidian/60 max-w-[640px] mx-auto leading-relaxed text-balance">
             Growth Architect. Builder. Curator of signal.
           </p>
         </div>
@@ -235,7 +235,7 @@ export default function AboutPage() {
       <ScrollReveal>
         <Section title="Want to Work Together?">
           <div className="max-w-[600px] space-y-6">
-            <p className="text-fog leading-relaxed">
+            <p className="text-obsidian/60 leading-relaxed">
               Whether you want weekly signal delivered to your inbox, access to my
               tools and research, or hands-on consulting for your AI-native
               venture — there&apos;s a way in.

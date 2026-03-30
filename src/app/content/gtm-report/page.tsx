@@ -39,7 +39,7 @@ export default function GtmReportPage() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black leading-[1.1] tracking-tight text-obsidian mb-4 text-balance">
             $2.5T Spent on AI.<br />Zero Way to Verify It.
           </h1>
-          <p className="text-lg md:text-xl text-fog max-w-[640px] mx-auto leading-relaxed text-balance">
+          <p className="text-lg md:text-xl text-obsidian/60 max-w-[640px] mx-auto leading-relaxed text-balance">
             Original research on the AI verification gap — who&apos;s building the fix, who&apos;s funding it, and where zero-knowledge cryptography changes everything.
           </p>
         </div>

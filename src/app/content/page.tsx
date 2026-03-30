@@ -43,7 +43,7 @@ export default async function ContentPage() {
           <h1 className="text-4xl sm:text-5xl md:text-[64px] font-bold leading-[1.1] tracking-tight text-obsidian mb-6 text-balance">
             Content &amp; Research
           </h1>
-          <p className="text-lg md:text-xl text-fog max-w-[640px] mx-auto leading-relaxed text-balance">
+          <p className="text-lg md:text-xl text-obsidian/60 max-w-[640px] mx-auto leading-relaxed text-balance">
             Original research, live data tools, and insights on Bitcoin and
             the agentic economy.
           </p>
@@ -112,11 +112,11 @@ export default async function ContentPage() {
               <h3 className="text-2xl sm:text-3xl font-black text-obsidian leading-tight mb-4 text-balance">
                 SEC &amp; CFTC Crypto Guidance 2026:<br />What Is and Isn&apos;t a Security
               </h3>
-              <p className="text-sm sm:text-base text-fog max-w-[600px] leading-relaxed mb-6">
+              <p className="text-sm sm:text-base text-obsidian/60 max-w-[600px] leading-relaxed mb-6">
                 The SEC and CFTC jointly classified crypto assets into 5 categories. BTC, ETH, SOL, DOGE, XRP are officially digital commodities. Staking, mining, NFTs, memecoins cleared. Full 68-page breakdown — reviewed with DLT Law.
               </p>
 
-              <ul className="text-sm text-fog/60 space-y-2 mb-8 max-w-[500px]">
+              <ul className="text-sm text-obsidian/40 space-y-2 mb-8 max-w-[500px]">
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-0.5">&#x25B8;</span>
                   5 new asset categories &mdash; what&apos;s a security, what&apos;s not
@@ -138,7 +138,7 @@ export default async function ContentPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </span>
-                <span className="text-[10px] text-fog/40 uppercase tracking-wider">
+                <span className="text-[10px] text-obsidian/30 uppercase tracking-wider">
                   With DLT Law
                 </span>
               </div>
@@ -150,7 +150,7 @@ export default async function ContentPage() {
       {/* 3. Live Data Tools */}
       <ScrollReveal>
         <Section title="Live Data Tools" subtitle="Free charts — updated every 5 minutes." variant="light">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[900px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1200px]">
             {/* Bitcoin Holders */}
             <Link
               href="/content/bitcoin-holders"
@@ -161,7 +161,7 @@ export default async function ContentPage() {
                 <h3 className="text-lg font-bold text-obsidian mb-1">
                   Who Holds The Most Bitcoin?
                 </h3>
-                <p className="text-sm text-fog leading-relaxed mb-2">
+                <p className="text-sm text-obsidian/60 leading-relaxed mb-2">
                   A breakdown of the largest Bitcoin holders — from Satoshi to
                   sovereign nations.
                 </p>
@@ -184,12 +184,49 @@ export default async function ContentPage() {
                 <h3 className="text-lg font-bold text-obsidian mb-1">
                   Bitcoin Flippening Watch
                 </h3>
-                <p className="text-sm text-fog leading-relaxed mb-2">
+                <p className="text-sm text-obsidian/60 leading-relaxed mb-2">
                   Tracking Bitcoin&apos;s race to become the #1 asset on earth by
                   market cap.
                 </p>
                 <span className="inline-flex items-center gap-1 text-xs text-primary font-medium group-hover:underline">
                   View live tracker
+                  <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </Link>
+
+            {/* Bitcoin Vital Signs */}
+            <Link
+              href="/content/vital-signs"
+              className="group block overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="h-[200px] bg-obsidian flex items-center justify-center relative overflow-hidden">
+                {/* Decorative grid lines */}
+                <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+                {/* Mini gauge + EKG line */}
+                <div className="flex flex-col items-center gap-3 relative z-10">
+                  <svg width="100" height="56" viewBox="0 0 100 56">
+                    <path d="M8 48 A 42 42 0 1 1 92 48" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="6" strokeLinecap="round" />
+                    <path d="M8 48 A 42 42 0 1 1 92 48" fill="none" stroke="#F7931A" strokeWidth="6" strokeLinecap="round" strokeDasharray="132" strokeDashoffset="40" />
+                    <text x="50" y="46" textAnchor="middle" fill="white" fontSize="18" fontWeight="700" fontFamily="Inter, sans-serif">70</text>
+                  </svg>
+                  <svg width="120" height="24" viewBox="0 0 120 24" className="text-primary">
+                    <polyline points="0,12 20,12 30,12 35,2 40,22 45,8 50,14 55,12 70,12 80,12 85,4 90,20 95,10 100,13 105,12 120,12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <p className="text-[10px] text-white/50 uppercase tracking-widest font-medium">Live On-Chain Health</p>
+                </div>
+              </div>
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-obsidian mb-1">
+                  Bitcoin Vital Signs
+                </h3>
+                <p className="text-sm text-obsidian/60 leading-relaxed mb-2">
+                  6 categories of on-chain health metrics scored 0-100. Live data, transparent methodology.
+                </p>
+                <span className="inline-flex items-center gap-1 text-xs text-primary font-medium group-hover:underline">
+                  View dashboard
                   <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -207,7 +244,7 @@ export default async function ContentPage() {
             headline="Never miss an insight"
             subtext="Get my best thinking on AI, macro, and the agentic economy — straight to your inbox."
           />
-          <p className="text-center text-xs text-fog mt-4">
+          <p className="text-center text-xs text-obsidian/40 mt-4">
             Unsubscribe anytime. Signal only.
           </p>
         </Section>

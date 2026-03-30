@@ -151,7 +151,7 @@ export default function EmailGate({ teaser, children }: EmailGateProps) {
               <h3 className="text-2xl font-bold text-obsidian mb-2">
                 Read the full report
               </h3>
-              <p className="text-fog text-sm mb-6 max-w-md mx-auto">
+              <p className="text-obsidian/60 text-sm mb-6 max-w-md mx-auto">
                 Enter your email to unlock. Already subscribed? Just enter your
                 email and we&apos;ll recognize you.
               </p>

@@ -46,7 +46,7 @@ export default function ContentPageClient({
               className={`px-5 py-2 text-sm font-medium rounded-full border transition-all duration-200 cursor-pointer ${
                 activeTab === tab
                   ? "bg-primary text-white border-primary"
-                  : "bg-transparent text-fog border-card-border hover:border-card-hover hover:text-obsidian"
+                  : "bg-transparent text-obsidian/60 border-card-border hover:border-card-hover hover:text-obsidian"
               }`}
             >
               {tab}
@@ -70,7 +70,7 @@ export default function ContentPageClient({
         </div>
 
         {filtered.length === 0 && (
-          <p className="text-center text-fog py-12">
+          <p className="text-center text-obsidian/60 py-12">
             No content in this category yet. Check back soon.
           </p>
         )}
