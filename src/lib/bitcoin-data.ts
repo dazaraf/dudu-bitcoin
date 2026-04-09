@@ -46,7 +46,7 @@ export const TOP_HOLDERS: Holder[] = [
   { name: "USA", btc: 198, type: "nation" },
   { name: "China", btc: 194, type: "nation" },
   { name: "Fidelity", btc: 189, type: "etf" },
-  { name: "Kraken", btc: 156, type: "exchange" },
+  { name: "Kraken", btc: 192, type: "exchange" },
   { name: "Block.one", btc: 140, type: "company" },
 ];
 
@@ -79,8 +79,8 @@ async function scrapeBitbo(): Promise<Holder[]> {
 
   const holders: Holder[] = [];
 
-  // ETFs — search after "ETFs that Own Bitcoin"
-  const etfStart = text.indexOf("ETFs that Own Bitcoin");
+  // ETFs — search after ETFs section header
+  const etfStart = text.indexOf("ETFs");
   if (etfStart >= 0) {
     const ibit = findBtcAmount(text, "iShares Bitcoin Trust", etfStart);
     if (ibit) holders.push({ name: "BlackRock", btc: Math.round(ibit / 1000), type: "etf" });
@@ -100,8 +100,8 @@ async function scrapeBitbo(): Promise<Holder[]> {
     if (strategy) holders.push({ name: "Strategy", btc: Math.round(strategy / 1000), type: "company" });
   }
 
-  // Private companies — search after "Private Companies that Own Bitcoin"
-  const privStart = text.indexOf("Private Companies that Own Bitcoin");
+  // Private companies — search after "Private Companies" section
+  const privStart = text.indexOf("Private Companies");
   if (privStart >= 0) {
     const blockone = findBtcAmount(text, "Block.one", privStart);
     if (blockone) holders.push({ name: "Block.one", btc: Math.round(blockone / 1000), type: "company" });
