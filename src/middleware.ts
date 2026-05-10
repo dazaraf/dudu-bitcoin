@@ -1,9 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname !== '/lionsgate') return NextResponse.next();
+// Gate config: map path → env var holding the password.
+const GATES: Record<string, string> = {
+  '/lionsgate': 'LIONSGATE_PASSWORD',
+  '/crymbo':    'CRYMBO_PASSWORD',
+};
 
-  const password = process.env.LIONSGATE_PASSWORD;
+export function middleware(request: NextRequest) {
+  const envVar = GATES[request.nextUrl.pathname];
+  if (!envVar) return NextResponse.next();
+
+  const password = process.env[envVar];
   if (!password) return new NextResponse('Not configured', { status: 500 });
 
   const expected = `Basic ${btoa(`guest:${password}`)}`;
@@ -16,5 +23,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/lionsgate'],
+  matcher: ['/lionsgate', '/crymbo'],
 };
