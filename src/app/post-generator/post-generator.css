@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter+Tight:wght@400..700&family=JetBrains+Mono:wght@400..700&display=swap');
+
+.pg-root {
+  min-height: 100vh;
+  background-color: var(--color-pg-paper);
+  color: var(--color-pg-ink);
+  font-family: "Inter Tight", sans-serif;
+}
+
+.pg-root.paper-grain {
+  background-image: radial-gradient(circle at 1px 1px, rgba(10, 10, 10, 0.015) 1px, transparent 0);
+  background-size: 16px 16px;
+}
+
+@keyframes pg-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.pg-root .animate-in {
+  animation: pg-fade-in 0.4s cubic-bezier(0.2, 0, 0.13, 1) both;
+}
+
+.pg-root .font-display,
+.pg-root h1,
+.pg-root h2,
+.pg-root h3 {
+  font-family: "Fraunces", serif;
+  letter-spacing: -0.01em;
+}
+
+.pg-root .font-mono { font-family: "JetBrains Mono", monospace; }
+.pg-root .font-sans { font-family: "Inter Tight", sans-serif; }
