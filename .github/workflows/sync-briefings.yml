@@ -1,0 +1,54 @@
+name: Sync post-generator briefings
+
+# Pulls each day's briefing from the private CEO repo (where the VPS briefer
+# commits it at ~05:00 UTC) into this repo, so /post-generator on the live site
+# always has the latest. Runs entirely on GitHub's infra — no local machine.
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # daily 06:00 UTC, ~1h after the briefer commits
+  workflow_dispatch: {} # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-briefings
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout site repo
+        uses: actions/checkout@v4
+
+      - name: Checkout CEO briefings (sparse)
+        uses: actions/checkout@v4
+        with:
+          repository: dazaraf/CEO
+          token: ${{ secrets.CEO_REPO_TOKEN }}
+          path: _ceo
+          sparse-checkout: content-factory/research/briefings
+          sparse-checkout-cone-mode: false
+
+      - name: Copy new briefings
+        run: |
+          mkdir -p content/post-generator/briefings
+          rsync -a --include='????-??-??.md' --exclude='*' \
+            _ceo/content-factory/research/briefings/ \
+            content/post-generator/briefings/
+          rm -rf _ceo
+
+      - name: Commit & push if changed
+        run: |
+          if [ -n "$(git status --porcelain content/post-generator/briefings)" ]; then
+            git config user.name "briefing-sync[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add content/post-generator/briefings
+            git commit -m "Sync briefings $(date -u +%F)"
+            git push
+            echo "Pushed new briefings."
+          else
+            echo "No new briefings."
+          fi
