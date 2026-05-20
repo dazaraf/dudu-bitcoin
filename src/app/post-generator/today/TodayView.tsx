@@ -108,6 +108,12 @@ export default function TodayView(props: Props) {
           </div>
           <nav className="flex items-center gap-6 text-sm">
             <a
+              href="/post-generator/briefing"
+              className="text-pg-muted hover:text-pg-ink transition-colors"
+            >
+              Briefing
+            </a>
+            <a
               href="/post-generator/onboarding"
               className="text-pg-muted hover:text-pg-ink transition-colors"
             >

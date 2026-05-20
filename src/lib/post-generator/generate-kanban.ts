@@ -92,6 +92,23 @@ export function calcCost(
   );
 }
 
+export function listBriefingDates(): string[] {
+  if (!fs.existsSync(BRIEFINGS_DIR)) return [];
+  return fs
+    .readdirSync(BRIEFINGS_DIR)
+    .filter((f) => /^\d{4}-\d{2}-\d{2}\.md$/.test(f))
+    .map((f) => f.replace(/\.md$/, ''))
+    .sort()
+    .reverse();
+}
+
+export function readBriefing(date: string): string | null {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
+  const p = path.join(BRIEFINGS_DIR, `${date}.md`);
+  if (!fs.existsSync(p)) return null;
+  return fs.readFileSync(p, 'utf8');
+}
+
 // Picks the most recent briefing on or before `date`. Briefings are produced daily but
 // weekends/gaps happen; we fall back so users never see a hard "no briefing" error.
 function findLatestBriefing(date: string): { path: string; date: string } | null {

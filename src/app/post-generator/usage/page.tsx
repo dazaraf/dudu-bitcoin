@@ -35,6 +35,12 @@ export default async function UsagePage() {
           >
             Today
           </a>
+          <a
+            href="/post-generator/briefing"
+            className="text-pg-muted hover:text-pg-ink transition-colors"
+          >
+            Briefing
+          </a>
         </nav>
       </header>
 
