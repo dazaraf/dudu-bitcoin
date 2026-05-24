@@ -147,114 +147,72 @@ export interface FlippeningAsset {
   marketCapT: number; // trillions USD
 }
 
-// Static fallback market caps (trillions USD)
-const FLIPPENING_FALLBACK: FlippeningAsset[] = [
-  { name: "Gold", key: "gold", marketCapT: 31.27 },
-  { name: "Silver", key: "silver", marketCapT: 4.07 },
-  { name: "NVIDIA", key: "nvidia", marketCapT: 4.34 },
-  { name: "Alphabet", key: "alphabet", marketCapT: 4.016 },
-  { name: "Apple", key: "apple", marketCapT: 3.845 },
-  { name: "Microsoft", key: "microsoft", marketCapT: 3.546 },
-  { name: "Amazon", key: "amazon", marketCapT: 2.634 },
+// A company's market cap is share price × shares outstanding; a metal's is spot
+// price × above-ground supply. Both scale linearly with the unit price — the part
+// that actually moves day to day. So we calibrate each asset against a known
+// {market cap, price} snapshot, then track the live price from Stooq (free EOD
+// quotes, no API key) and scale: liveCap = refCap × livePrice / refPrice.
+//
+// Shares outstanding and metal supply drift only ~1%/yr, so between recalibrations
+// the live price keeps each cap accurate to within a percent. Recalibrate every
+// few months: pull caps from companiesmarketcap.com and the matching Stooq close.
+// Last calibrated: 2026-05-24 (Stooq close 2026-05-22).
+interface AssetCalibration {
+  name: string;
+  key: string;
+  stooq: string; // Stooq symbol (e.g. "nvda.us", "xauusd")
+  refCapT: number; // market cap at calibration, trillions USD (companiesmarketcap.com)
+  refPrice: number; // Stooq close at calibration
+}
+
+const FLIPPENING_CALIBRATION: AssetCalibration[] = [
+  { name: "Gold", key: "gold", stooq: "xauusd", refCapT: 31.361, refPrice: 4508.32 },
+  { name: "NVIDIA", key: "nvidia", stooq: "nvda.us", refCapT: 5.215, refPrice: 215.33 },
+  { name: "Alphabet", key: "alphabet", stooq: "goog.us", refCapT: 4.596, refPrice: 379.38 },
+  { name: "Apple", key: "apple", stooq: "aapl.us", refCapT: 4.535, refPrice: 308.82 },
+  { name: "Silver", key: "silver", stooq: "xagusd", refCapT: 4.273, refPrice: 75.582 },
+  { name: "Microsoft", key: "microsoft", stooq: "msft.us", refCapT: 3.109, refPrice: 418.57 },
+  { name: "Amazon", key: "amazon", stooq: "amzn.us", refCapT: 2.864, refPrice: 266.32 },
 ];
 
-const AV_BASE = "https://www.alphavantage.co/query";
+// Static fallback (= the calibration snapshot) used when Stooq is unreachable.
+const FLIPPENING_FALLBACK: FlippeningAsset[] = FLIPPENING_CALIBRATION.map(
+  ({ name, key, refCapT }) => ({ name, key, marketCapT: refCapT })
+);
 
-// Above-ground supply estimates (troy ounces)
-const GOLD_SUPPLY_OZ = 6_912_750_000; // 215,000 tonnes — World Gold Council
-const SILVER_SUPPLY_OZ = 55_880_000_000; // ~1,738,000 tonnes — Silver Institute
-
-function avFetch(url: string, revalidate = 86400): Promise<Response> {
+// Fetch one end-of-day price from Stooq's CSV endpoint. Returns null on any
+// failure so the caller can fall back to the calibrated cap.
+async function fetchStooqPrice(symbol: string): Promise<number | null> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 10_000);
-  return fetch(url, {
-    signal: controller.signal,
-    next: { revalidate },
-  }).finally(() => clearTimeout(timeout));
-}
-
-async function fetchCommodityCapT(
-  symbol: "GOLD" | "SILVER"
-): Promise<number | null> {
-  const key = process.env.ALPHA_VANTAGE_API_KEY;
-  if (!key) return null;
   try {
-    const res = await avFetch(
-      `${AV_BASE}?function=GOLD_SILVER_SPOT&symbol=${symbol}&apikey=${key}`
-    );
+    const res = await fetch(`https://stooq.com/q/l/?s=${symbol}&f=sc&e=csv`, {
+      signal: controller.signal,
+      next: { revalidate: 86400 }, // refresh daily
+    });
     if (!res.ok) return null;
-    const data = await res.json();
-    const price = parseFloat(data.price);
-    if (isNaN(price)) return null;
-    const supply = symbol === "GOLD" ? GOLD_SUPPLY_OZ : SILVER_SUPPLY_OZ;
-    return (price * supply) / 1e12;
+    // Body is "SYMBOL,CLOSE" (no header); the price is the last comma field.
+    const lastLine = (await res.text()).trim().split("\n").pop() ?? "";
+    const price = parseFloat(lastLine.split(",").pop() ?? "");
+    return Number.isFinite(price) && price > 0 ? price : null;
   } catch {
     return null;
+  } finally {
+    clearTimeout(timeout);
   }
-}
-
-async function fetchStockCapT(ticker: string): Promise<number | null> {
-  const key = process.env.ALPHA_VANTAGE_API_KEY;
-  if (!key) return null;
-  try {
-    const res = await avFetch(
-      `${AV_BASE}?function=OVERVIEW&symbol=${ticker}&apikey=${key}`
-    );
-    if (!res.ok) return null;
-    const data = await res.json();
-    const cap = parseInt(data.MarketCapitalization);
-    return isNaN(cap) ? null : cap / 1e12;
-  } catch {
-    return null;
-  }
-}
-
-const STOCK_TICKERS: Record<string, string> = {
-  nvidia: "NVDA",
-  alphabet: "GOOG",
-  apple: "AAPL",
-  microsoft: "MSFT",
-  amazon: "AMZN",
-};
-
-// Serialize API calls with 1.5s delay to respect Alpha Vantage 5 req/min limit
-async function fetchSequentially<T>(
-  fns: (() => Promise<T>)[]
-): Promise<(T | null)[]> {
-  const results: (T | null)[] = [];
-  for (let i = 0; i < fns.length; i++) {
-    try {
-      results.push(await fns[i]());
-    } catch {
-      results.push(null);
-    }
-    if (i < fns.length - 1) {
-      await new Promise((r) => setTimeout(r, 1500));
-    }
-  }
-  return results;
 }
 
 export async function fetchFlippeningAssets(): Promise<FlippeningAsset[]> {
   try {
-    const stockKeys = Object.keys(STOCK_TICKERS);
-    const fns: (() => Promise<number | null>)[] = [
-      () => fetchCommodityCapT("GOLD"),
-      () => fetchCommodityCapT("SILVER"),
-      ...stockKeys.map((k) => () => fetchStockCapT(STOCK_TICKERS[k])),
-    ];
+    const prices = await Promise.all(
+      FLIPPENING_CALIBRATION.map((c) => fetchStooqPrice(c.stooq))
+    );
 
-    const results = await fetchSequentially(fns);
-
-    const assets: FlippeningAsset[] = FLIPPENING_FALLBACK.map((fb) => {
-      let live: number | null = null;
-      if (fb.key === "gold") live = results[0];
-      else if (fb.key === "silver") live = results[1];
-      else {
-        const idx = stockKeys.indexOf(fb.key);
-        if (idx >= 0) live = results[2 + idx];
-      }
-      return { ...fb, marketCapT: live ?? fb.marketCapT };
+    const assets: FlippeningAsset[] = FLIPPENING_CALIBRATION.map((c, i) => {
+      const live = prices[i];
+      const marketCapT =
+        live != null ? (c.refCapT * live) / c.refPrice : c.refCapT;
+      return { name: c.name, key: c.key, marketCapT };
     });
 
     // Sort by market cap descending

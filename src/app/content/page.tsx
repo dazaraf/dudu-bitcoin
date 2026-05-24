@@ -3,7 +3,7 @@ import Link from "next/link";
 import Section from "@/components/Section";
 import EmailCapture from "@/components/EmailCapture";
 import ScrollReveal from "@/components/ScrollReveal";
-import { fetchBtcMarketData } from "@/lib/bitcoin-data";
+import { fetchBtcMarketData, fetchFlippeningAssets } from "@/lib/bitcoin-data";
 import BitcoinHoldersChart from "@/components/BitcoinHoldersChart";
 import FlippeningChart from "@/components/FlippeningChart";
 
@@ -21,7 +21,10 @@ export const metadata: Metadata = {
 };
 
 export default async function ContentPage() {
-  const btcData = await fetchBtcMarketData();
+  const [btcData, flippeningAssets] = await Promise.all([
+    fetchBtcMarketData(),
+    fetchFlippeningAssets(),
+  ]);
 
   return (
     <>
@@ -179,7 +182,7 @@ export default async function ContentPage() {
               href="/content/flippening"
               className="group block overflow-hidden rounded-xl border border-card-border bg-white shadow-sm hover:shadow-md transition-shadow"
             >
-              <FlippeningChart btcData={btcData} compact />
+              <FlippeningChart btcData={btcData} assets={flippeningAssets} compact />
               <div className="p-5">
                 <h3 className="text-lg font-bold text-obsidian mb-1">
                   Bitcoin Flippening Watch

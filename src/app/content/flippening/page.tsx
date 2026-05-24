@@ -10,7 +10,7 @@ import ExportableChart from "@/components/ExportableChart";
 export const metadata: Metadata = {
   title: "Bitcoin Flippening Index — Live BTC vs Gold, Apple, NVIDIA Market Cap Tracker",
   description:
-    "Live Bitcoin flippening tracker: see how close BTC is to surpassing Gold ($31T), Apple, NVIDIA, Microsoft, Amazon, and Alphabet by market cap. Flip price calculator updated daily with real-time data from Alpha Vantage and CoinGecko.",
+    "Live Bitcoin flippening tracker: see how close BTC is to surpassing Gold ($31T), Apple, NVIDIA, Microsoft, Amazon, and Alphabet by market cap. Flip price calculator updated daily with live market data from Stooq and CoinGecko.",
   openGraph: {
     type: "article",
     title: "Bitcoin Flippening Index — Live Market Cap Tracker",
@@ -105,7 +105,7 @@ export default async function FlippeningPage() {
         name: "How often is the flippening data updated?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Bitcoin price and market cap refresh every 5 minutes via the CoinGecko API. Stock market caps (Apple, NVIDIA, Microsoft, Amazon, Alphabet) and commodity prices (Gold, Silver) update daily via the Alpha Vantage API.",
+          text: "Bitcoin price and market cap refresh every 5 minutes via the CoinGecko API. Stock prices (Apple, NVIDIA, Microsoft, Amazon, Alphabet) and metal prices (Gold, Silver) update daily via Stooq, and each asset's market cap is scaled from its live price.",
         },
       },
       {
@@ -187,8 +187,8 @@ export default async function FlippeningPage() {
             </ExportableChart>
 
             <p className="text-xs text-obsidian/60 mt-3">
-              Last updated: {today}. BTC price via CoinGecko (5-min refresh). Asset market caps via Alpha Vantage (daily).
-              Gold supply estimate: 215,000 tonnes (World Gold Council). Silver supply: ~1.74M tonnes (Silver Institute).
+              Last updated: {today}. BTC price via CoinGecko (5-min refresh). Stock and metal prices via Stooq (daily);
+              each market cap scales its share count / above-ground supply by the live price.
             </p>
           </div>
         </Section>
@@ -312,12 +312,13 @@ export default async function FlippeningPage() {
             </h3>
             <p className="text-obsidian/60 leading-relaxed mb-4">
               Bitcoin price and market cap data comes from the{" "}
-              <strong>CoinGecko API</strong>, refreshing every 5 minutes. Stock market
-              capitalizations for Apple, NVIDIA, Microsoft, Amazon, and Alphabet are
-              sourced from <strong>Alpha Vantage</strong> and update daily. Gold and Silver
-              market caps are calculated using spot prices from Alpha Vantage multiplied
-              by above-ground supply estimates: 215,000 tonnes for Gold (World Gold Council)
-              and approximately 1.74 million tonnes for Silver (Silver Institute).
+              <strong>CoinGecko API</strong>, refreshing every 5 minutes. Daily share
+              prices for Apple, NVIDIA, Microsoft, Amazon, and Alphabet — and spot prices
+              for Gold and Silver — come from <strong>Stooq</strong>. Each asset&apos;s
+              market cap is derived by scaling a calibrated reference (its market cap on a
+              known date) by the live price, since a market cap equals price times shares
+              outstanding (stocks) or above-ground supply (metals), and only the price
+              moves materially day to day.
             </p>
           </div>
         </Section>
@@ -359,8 +360,8 @@ export default async function FlippeningPage() {
             </h3>
             <p className="text-obsidian/60 leading-relaxed mb-4">
               Bitcoin price and market cap refresh every 5 minutes via CoinGecko. Stock
-              market caps (Apple, NVIDIA, Microsoft, Amazon, Alphabet) and commodity
-              spot prices (Gold, Silver) update daily via Alpha Vantage.
+              and metal prices (Apple, NVIDIA, Microsoft, Amazon, Alphabet, Gold, Silver)
+              update daily via Stooq, with each market cap scaled from its live price.
             </p>
 
             <h3 className="text-base font-bold text-obsidian mt-4 mb-2">
