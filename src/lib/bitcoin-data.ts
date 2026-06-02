@@ -37,16 +37,16 @@ export async function fetchBtcMarketData(): Promise<BtcMarketData> {
 // Values in thousands of BTC
 export const TOP_HOLDERS: Holder[] = [
   { name: "Satoshi", btc: 1100, type: "individual" },
-  { name: "Coinbase", btc: 857, type: "exchange" },
+  { name: "Coinbase", btc: 851, type: "exchange" },
   { name: "BlackRock", btc: 786, type: "etf" },
   { name: "Strategy", btc: 761, type: "company" },
-  { name: "Binance", btc: 632, type: "exchange" },
-  { name: "Bitfinex", btc: 401, type: "exchange" },
+  { name: "Binance", btc: 640, type: "exchange" },
+  { name: "Bitfinex", btc: 413, type: "exchange" },
   { name: "Grayscale", btc: 208, type: "etf" },
   { name: "USA", btc: 198, type: "nation" },
   { name: "China", btc: 194, type: "nation" },
   { name: "Fidelity", btc: 189, type: "etf" },
-  { name: "Kraken", btc: 192, type: "exchange" },
+  { name: "Kraken", btc: 143, type: "exchange" },
   { name: "Block.one", btc: 140, type: "company" },
 ];
 
