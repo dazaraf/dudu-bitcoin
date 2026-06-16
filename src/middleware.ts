@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from 'next/server';
 const BASIC_AUTH_GATES: Record<string, string> = {
   '/lionsgate': 'LIONSGATE_PASSWORD',
   '/crymbo':    'CRYMBO_PASSWORD',
+  '/oobit':     'OOBIT_PASSWORD',
 };
 
 export function middleware(request: NextRequest) {
@@ -27,8 +28,9 @@ export function middleware(request: NextRequest) {
   const password = process.env[envVar];
   if (!password) return new NextResponse('Not configured', { status: 500 });
 
-  const expected = `Basic ${btoa(`guest:${password}`)}`;
-  if (request.headers.get('authorization') === expected) return NextResponse.next();
+  let expected: string | null = null;
+  try { expected = `Basic ${btoa(`guest:${password}`)}`; } catch { expected = null; }
+  if (expected && request.headers.get('authorization') === expected) return NextResponse.next();
 
   return new NextResponse('Authentication required', {
     status: 401,
@@ -37,5 +39,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/lionsgate', '/crymbo', '/post-generator/:path+'],
+  matcher: ['/lionsgate', '/crymbo', '/oobit', '/post-generator/:path+'],
 };
